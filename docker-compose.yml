@@ -1,0 +1,35 @@
+# docker-compose.ymlフォーマットのバージョン指定
+version: '3'
+# DBの内容をローカルに保持
+volumes:
+  mysql-data:
+
+services:
+  # Railsコンテナ定義
+  web:
+    # Dockerfileを使用してイメージをビルド
+    build: .
+    # コンテナ起動時のデフォルトコマンド
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    # コンテナの外部に3000番を公開
+    # 公開するポート番号：コンテナ内部の転送先ポート番号
+    ports:
+      - 5000:3000
+    # ローカルのファイルをコンテナにマウント
+    volumes:
+      - .:/haraherhythm
+    # pryを使用してデバッグができるよう設定
+    tty: true
+    stdin_open: true
+
+  # MySQLコンテナ定義
+  db:
+    platform: linux/x86_64
+    # mysqlを使用してコンテナ作成
+    image: mysql:8.0
+    user: "1000:1000"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./src/db/mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
