@@ -1,0 +1,68 @@
+// Place all the styles related to the live controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.live-contents {
+  width: 100%;
+  position: relative;
+
+  .live-thumbnail {
+    text-align: center;
+    padding: 1em;
+    img {
+      border-radius: 20px;
+      width: 90%;
+      box-shadow: 0 2px 5px #1000ff;
+    }
+  }
+
+  .artist-list {
+    position: absolute;
+    top: 0.5em;
+    left: 1.8em;
+
+    .artist-card {
+      width: 5em;
+      background: none;
+
+      .thumbnail {
+        background: #FFF;
+      }
+      .title {
+        width: 100%;
+        background: #FFF;
+        border-radius: 10px;
+        font-size: 0.5em;
+      }
+    }
+  }
+}
+
+.product-sales {
+  .item-list {
+    .item-card {
+      .description {
+        position: relative;
+
+        .artist-list {
+          position: absolute;
+          top: 0.3em;
+          left: -2em;
+          margin-right: auto;
+
+          .artist-card {
+            width: 3.5em;
+            background: none;
+            margin: 0;
+
+            .thumbnail {
+              width: 100%;
+              background: #FFF;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
