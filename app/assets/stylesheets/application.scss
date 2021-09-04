@@ -76,8 +76,7 @@ contents {
     }
 
     .item-card {
-      width: 30%;
-      max-width: 300px;
+      max-width: 20em;
       text-align: center;
       border: 2px solid #90b6d6;
       border-radius: 20px;
@@ -100,7 +99,7 @@ contents {
     }
 
     .artist-card {
-      max-width: 150px;
+      width: 7em;
       text-align: center;
       border-radius: 20px;
       box-sizing: border-box;
@@ -112,6 +111,9 @@ contents {
       .thumbnail {
         width: 100%;
         border-radius: 10em;
+      }
+      .title {
+        font-size: 0.8em;
       }
     }
   }
