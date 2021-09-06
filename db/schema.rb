@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 2021_09_04_015310) do
     t.string "nickname", null: false, comment: "表示名"
     t.string "thumbnail", comment: "アイコン"
     t.text "description", comment: "自己紹介"
+    t.date "birthday", comment: "誕生日"
     t.string "postal_code", null: false, comment: "郵便番号"
     t.string "address_1", null: false, comment: "都道府県"
     t.string "address_2", null: false, comment: "市区町村"
     t.string "address_3", null: false, comment: "番地等"
+    t.string "website_url", comment: "WebサイトのURL"
     t.boolean "delete_flg", default: false, null: false, comment: "削除フラグ"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
