@@ -10,4 +10,7 @@ Rails.application.routes.draw do
     get '/', action: :index
     resources :items, only: [:index]
   end
+
+  resources :items, only: [:show] do
+  end
 end

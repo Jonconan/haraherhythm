@@ -27,3 +27,119 @@
     border-bottom: 15px solid transparent;
   }
 }
+
+.items {
+  display: flex;
+  .item-photo {
+    padding: 1em;
+    width: 65%;
+    max-width: 750px;
+    img {
+      width: 100%;
+    }
+  }
+  .description {
+    padding: 1em;
+    width: 30%;
+
+    .tags {
+      display: flex;
+      font-size: 0.7em;
+      padding-inline-start: 0;
+
+      .tag-icon {
+        width: 1em;
+        padding-right: 0.3em;
+        display: inline-flex;
+        img {
+          width: 100%;
+        }
+      }
+
+      li {
+        margin-right: 1.7em;
+      }
+    }
+
+    .price {
+      font-size: 3em;
+      padding-bottom: 0.3em;
+      padding-left: 0.5em;
+    }
+
+    .shopping {
+      font-size: 0.6em;
+      .flow {
+      }
+    }
+
+    .add-cart {
+      margin: 1em;
+      background: rgb(105, 36, 195);
+      color: #FFF;
+      padding: 1.7em;
+      border-radius: 2em;
+      display: inline-flex;
+
+      .cart-icon {
+        width: 1.1em;
+        padding-right: 0.7em;
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .review {
+      span {
+        margin-right: 1em;
+      }
+    }
+
+    .artist-list {
+      padding-inline-start: 0;
+
+      .artist-card {
+        width: 4.5em;
+        margin: 0;
+      }
+    }
+  }
+}
+
+
+
+.star5_rating{
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  white-space: nowrap;
+  color: #CCCCCC; /* グレーカラー 自由に設定化 */
+  font-size: 1.5em; /* フォントサイズ 自由に設定化 */
+}
+
+.star5_rating:before, .star5_rating:after{
+  content: '★★★★★';
+}
+
+.star5_rating:after{
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #ffcf32; /* イエローカラー 自由に設定化 */
+}
+
+.star5_rating[data-rate="5"]:after{ width: 100%; } /* 星5 */
+.star5_rating[data-rate="4.5"]:after{ width: 90%; } /* 星4.5 */
+.star5_rating[data-rate="4"]:after{ width: 80%; } /* 星4 */
+.star5_rating[data-rate="3.5"]:after{ width: 70%; } /* 星3.5 */
+.star5_rating[data-rate="3"]:after{ width: 60%; } /* 星3 */
+.star5_rating[data-rate="2.5"]:after{ width: 50%; } /* 星2.5 */
+.star5_rating[data-rate="2"]:after{ width: 40%; } /* 星2 */
+.star5_rating[data-rate="1.5"]:after{ width: 30%; } /* 星1.5 */
+.star5_rating[data-rate="1"]:after{ width: 20%; } /* 星1 */
+.star5_rating[data-rate="0.5"]:after{ width: 10%; } /* 星0.5 */
+.star5_rating[data-rate="0"]:after{ width: 0%; } /* 星0 */
