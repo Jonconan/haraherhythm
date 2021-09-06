@@ -146,3 +146,20 @@ footer {
   padding: 5px 10px 20px 10px;
   background: #ebf397;
 }
+
+
+.breadcrumb {
+  ul {
+    display: flex;
+    font-size: 0.7em;
+    padding-inline-start: 0;
+
+    li {
+      margin-right: 1.1em;
+    }
+
+    .before-page::after {
+      content: "　>";
+    }
+  }
+}
