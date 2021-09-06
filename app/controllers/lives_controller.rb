@@ -1,4 +1,4 @@
-class LiveController < ApplicationController
+class LivesController < ApplicationController
   def index
     @id = params[:live_id]
   end

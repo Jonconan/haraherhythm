@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root 'page#index'
+  root 'pages#index'
 
-  resources :live, only: [] do
+  resources :lives, only: [] do
     get '/', action: :index
   end
 
-  resources :artist, only: [] do
+  resources :artists, only: [] do
     get '/', action: :index
+    resources :items, only: [:index]
   end
 end
