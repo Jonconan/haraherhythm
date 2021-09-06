@@ -13,6 +13,9 @@
 ActiveRecord::Schema.define(version: 2021_09_04_015310) do
 
   create_table "artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "code", null: false, comment: "アーティストコード"
+    t.string "email", null: false, comment: "Email"
+    t.string "encrypted_password", null: false
     t.string "name", null: false, comment: "本名（非公開）"
     t.string "nickname", null: false, comment: "表示名"
     t.string "thumbnail", comment: "アイコン"

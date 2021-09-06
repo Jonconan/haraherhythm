@@ -1,6 +1,9 @@
 class CreateArtists < ActiveRecord::Migration[6.0]
   def change
     create_table :artists do |t|
+      t.string :code, null: false, comment: "アーティストコード"
+      t.string :email, null: false, comment: "Email"
+      t.string  :encrypted_password, null: false
       t.string :name, null: false, comment: "本名（非公開）"
       t.string :nickname, null: false, comment: "表示名"
       t.string :thumbnail, comment: "アイコン"
