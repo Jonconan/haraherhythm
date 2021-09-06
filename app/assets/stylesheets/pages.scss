@@ -1,3 +1,46 @@
 // Place all the styles related to the page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.new-artists {
+  margin: 1em;
+  width: 80%;
+
+  th {
+    width: 25%;
+  }
+  .require::after {
+    content: "必須";
+    background-color: #b70000;
+    color: #fff;
+    font-size: 0.5em;
+    min-width: 10px;
+    padding: 3px 7px;
+    margin: 0px 5px;
+    vertical-align: middle;
+    text-align: center;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  td {
+    width: 75%;
+
+    input {
+      margin: 1em;
+      padding: 1em;
+      width: 85%;
+
+      font-size: 1em;
+    }
+
+    textarea {
+      margin: 1em;
+      padding: 1em;
+      width: 85%;
+      height: 15em;
+
+      font-size: 1em;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+require 'securerandom'
 
 class Artists::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
@@ -10,9 +10,21 @@ class Artists::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @artist = Artist.new(artist_params)
+    if params[:artist][:password] == params[:artist][:password_confirmation]
+      @artist.code = SecureRandom.alphanumeric
+      @artist.password = params[:artist][:password]
+      if @artist.valid?
+        @artist.save!
+        redirect_to root_path
+      else
+        render :new
+      end
+    else
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -38,7 +50,7 @@ class Artists::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -59,4 +71,12 @@ class Artists::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  def artist_params
+    params.require(:artist).permit(
+      :email, :name, :nickname,
+      :birthday, :postal_code, :address_1, :address_2, :address_3,
+      :website_url, :description
+    )
+  end
 end

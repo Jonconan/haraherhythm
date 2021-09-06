@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     :registrations => 'artists/registrations',
     :sessions => 'artists/sessions'
   }
+  devise_scope :artist do
+    get '/artists/sign_out' => 'artists/sessions#destroy', as: :artist_sign_out
+  end
 
   resources :lives, only: [] do
     get '/', action: :index

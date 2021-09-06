@@ -1,0 +1,25 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li>ログイン</li>
+  </ul>
+</div>
+
+<h2>ログイン</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<table class="new-artists">
+  <tr>
+    <th class="require">メールアドレス</th>
+    <td><%= f.email_field :email %></td>
+  </tr>
+  <tr>
+    <th class="require">パスワード</th>
+    <td><%= f.password_field :password %></td>
+  </tr>
+</table>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
