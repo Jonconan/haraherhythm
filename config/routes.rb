@@ -5,4 +5,8 @@ Rails.application.routes.draw do
   resources :live, only: [] do
     get '/', action: :index
   end
+
+  resources :artist, only: [] do
+    get '/', action: :index
+  end
 end

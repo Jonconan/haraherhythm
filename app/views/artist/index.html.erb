@@ -1,0 +1,196 @@
+<h2>ジョンさんのプロフィール</h2>
+<ul class="artist-profile">
+  <li>
+    <div class="thumbnail">
+      <%= image_tag 'artists/joker.png', :size =>'320x320' %>
+    </div>
+    <ul class="review-list">
+      <li><%#= image_tag 'friends.png', :class => 'icon', :size =>'16x16' %> 10</li>
+      <li><%#= image_tag 'good.png', :class => 'icon', :size =>'16x16' %> 20</li>
+      <li><%#= image_tag 'comment.png', :class => 'icon', :size =>'16x16' %>  3</li>
+    </ul>
+  </li>
+  <li>
+    <table>
+      <tr>
+        <th>ユーザー名</th><td>ジョーカー</td>
+      </tr>
+      <tr>
+        <th>誕生日</th><td>10月 20日</td>
+      </tr>
+      <tr>
+        <th>SNS</th>
+        <td>
+          <table>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'twitter.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.twitter_id, 'https://twitter.com/'+@user.twitter_id, target: :_blank %></td>
+            </tr>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'facebook.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.facebook_id, 'https://www.facebook.com/'+@user.facebook_id, target: :_blank %></td>
+            </tr>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'github.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.github_id, 'https://github.com/'+@user.github_id, target: :_blank %></td>
+            </tr>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'youtube.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.youtube_id, 'https://www.youtube.com/user/'+@user.youtube_id, target: :_blank %></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <th>ホームページ</th><td><%#= link_to @user.website_url, @user.website_url, target: :_blank %></td>
+      </tr>
+    </table>
+  </li>
+</ul>
+
+
+
+<ul class="artist-button">
+  <li><a href="#" class="btn-square-slant">フォローする</a></li>
+  <li><a href="#" class="btn-square-slant">ファンレターを送る</a></li>
+</ul>
+
+<div class="profile-contents">
+  <div class="tabs">
+    <input id="all" type="radio" name="tab_item" checked>
+    <label class="tab_item" for="all">自己紹介</label>
+    <input id="programming" type="radio" name="tab_item">
+    <label class="tab_item" for="programming">出演歴</label>
+
+    <div class="tab_content" id="all_content">
+      <div class="tab_content_description">
+        <p>職務経歴をずらずらーーーっとなんかうまい感じに</p>
+      </div>
+    </div>
+    <div class="tab_content" id="programming_content">
+      <div class="tab_content_description">
+        <p>各言語・環境についての経験年数情報をずらずらと</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>物販一覧</h2>
+
+<div class="product-sales">
+  <ul class="item-list">
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/sukaru.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/sukaru.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+    <li class="item-card">
+      <div class="title">怪盗団の予告状</div>
+      <div class="description">
+        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <ul class="artist-list">
+          <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
+          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇ライブ</div>
+      <div class="price">¥ 1,500-</div>
+    </li>
+  </ul>
+</div>
+
+<ul class="artist-button">
+  <li><a href="#" class="btn-square-slant">フォローする</a></li>
+  <li><a href="#" class="btn-square-slant">ファンレターを送る</a></li>
+</ul>

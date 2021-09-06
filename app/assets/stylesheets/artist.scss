@@ -1,0 +1,165 @@
+// Place all the styles related to the artist controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+ul.review-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px 0 0 0;
+}
+ul.review-list > li {
+  width: 33%;
+  box-sizing: border-box;
+}
+
+ul.artist-profile {
+  display: flex;
+  flex-wrap: wrap;
+}
+ul.artist-profile > li {
+  margin: 5px;
+  width: 48%;
+  text-align: center;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+.sns-icon {
+  border-radius: 0px;
+  margin: 0 10px;
+  display: flex;
+}
+.sns {
+  width: 10%;
+  max-width: 50px;
+}
+.sns-id {
+  text-align: left;
+  padding: 0 10px;
+}
+.sns_id_input_form {
+  max-width: 150px;
+}
+
+
+.profile-contents {
+  width: 100%;
+  margin: 10px;
+}
+/*タブ切り替え全体のスタイル*/
+.tabs {
+  width: 90%;
+  padding-bottom: 40px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  margin: 50px auto;
+}
+
+/*タブのスタイル*/
+.tab_item {
+  width: calc(100%/2);
+  height: 50px;
+  border-bottom: 3px solid #5ab4bd;
+  line-height: 50px;
+  font-size: 16px;
+  text-align: center;
+  display: block;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+.tab_item:hover {
+  opacity: 0.75;
+}
+
+/*ラジオボタンを全て消す*/
+input[name="tab_item"] {
+  display: none;
+}
+
+/*タブ切り替えの中身のスタイル*/
+.tab_content {
+  display: none;
+  padding: 40px 40px 0;
+  overflow: hidden;
+}
+
+.tabs {
+  background: #FFF;
+  border: 5px solid #90b6d6;
+  min-height: 300px;
+}
+
+.artist-profile {
+  background: #ffffff8a;
+  border-radius: 20px;
+}
+ul.artist-button {
+  display: flex;
+  flex-wrap: wrap;
+}
+ul.artist-button > li {
+  margin: 5px;
+  width: 48%;
+  text-align: center;
+  border-radius: 20px;
+  box-sizing: border-box;
+  padding: 5px;
+}
+
+/*選択されているタブのコンテンツのみを表示*/
+#all:checked ~ #all_content,
+#programming:checked ~ #programming_content,
+#design:checked ~ #design_content,
+#design2:checked ~ #design2_content,
+#design3:checked ~ #design3_content {
+  display: block;
+}
+
+/*選択されているタブのスタイルを変える*/
+.tabs input:checked + .tab_item {
+  background-color: #5ab4bd;
+  color: #fff;
+}
+td.basic_info_confirm {
+  padding: 0 20px;
+}
+
+.btn-square-slant {
+  display: inline-block;
+  width: 80%;
+  padding: 1em 1.4em;
+  text-decoration: none;
+  border-radius: 24px;
+  background: #8b2dd2;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 5px #5b1c8b;/*ボタン色より暗めに*/
+  border-right: solid 5px #431467;/*ボタン色より暗めに*/
+}
+
+.btn-square-slant:before {
+  content: " ";
+  position: absolute;
+  bottom: -5px;
+  left: -1px;
+  width: 0;
+  height: 0;
+  border-width: 0 6px 6px 0px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color: #FFF;
+}
+
+.btn-square-slant:after {
+  content: " ";
+  position: absolute;
+  top: -1px;
+  right: -5px;
+  width: 0;
+  height: 0;
+  border-width: 0px 6px 6px 0px;
+  border-style: solid;
+  border-color: #FFF;
+  border-bottom-color: transparent;
+}

@@ -1,9 +1,11 @@
 <h2>アーティスト一覧</h2>
 <ul class="artist-list">
+  <%= link_to artist_path(artist_id: 1) do %>
   <li class="artist-card">
     <%= image_tag 'artists/joker.png', class: 'thumbnail' %>
     <div class="title">ジョーカー</div>
   </li>
+  <% end %>
   <li class="artist-card">
     <%= image_tag 'artists/sukaru.png', class: 'thumbnail' %>
     <div class="title">スカル</div>
