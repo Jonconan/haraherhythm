@@ -25,27 +25,66 @@
         </td>
       </tr>
       <tr>
-        <th>誕生日</th><td><%= current_artist.birthday.strftime("%m月 %d日") %></td>
+        <th>誕生日</th>
+        <td>
+          <% if current_artist.birthday.present? %>
+            <%= current_artist.birthday.strftime("%m月 %d日") %>
+          <% else %>
+            未設定
+          <% end %>
+        </td>
       </tr>
       <tr>
         <th>SNS</th>
         <td>
-          <table>
-            <tr style="height:40px;">
-              <td class="sns"><%#= image_tag 'twitter.png', :class => 'sns-icon', :size =>'20x20' %></td>
-              <td class="sns-id"><%#= link_to @user.twitter_id, 'https://twitter.com/'+@user.twitter_id, target: :_blank %></td>
+          <table class="sns_account_list">
+            <tr>
+              <td class="sns"><%= image_tag 'common/twitter.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if current_artist.sns_account(sns_name: 'twitter').present? %>
+                  <%= link_to current_artist.sns_account(sns_name: 'twitter'),
+                  'https://twitter.com/'+ current_artist.sns_account(sns_name: 'twitter'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
             </tr>
-            <tr style="height:40px;">
-              <td class="sns"><%#= image_tag 'facebook.png', :class => 'sns-icon', :size =>'20x20' %></td>
-              <td class="sns-id"><%#= link_to @user.facebook_id, 'https://www.facebook.com/'+@user.facebook_id, target: :_blank %></td>
+            <tr>
+              <td class="sns"><%= image_tag 'common/facebook.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if current_artist.sns_account(sns_name: 'facebook').present? %>
+                  <%= link_to current_artist.sns_account(sns_name: 'facebook'),
+                  'https://www.facebook.com/'+ current_artist.sns_account(sns_name: 'facebook'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
             </tr>
-            <tr style="height:40px;">
-              <td class="sns"><%#= image_tag 'github.png', :class => 'sns-icon', :size =>'20x20' %></td>
-              <td class="sns-id"><%#= link_to @user.github_id, 'https://github.com/'+@user.github_id, target: :_blank %></td>
+            <tr>
+              <td class="sns"><%= image_tag 'common/instagram.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if current_artist.sns_account(sns_name: 'instagram').present? %>
+                  <%= link_to current_artist.sns_account(sns_name: 'instagram'),
+                  'https://www.instagram.com/'+ current_artist.sns_account(sns_name: 'instagram'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
             </tr>
-            <tr style="height:40px;">
-              <td class="sns"><%#= image_tag 'youtube.png', :class => 'sns-icon', :size =>'20x20' %></td>
-              <td class="sns-id"><%#= link_to @user.youtube_id, 'https://www.youtube.com/user/'+@user.youtube_id, target: :_blank %></td>
+            <tr>
+              <td class="sns"><%= image_tag 'common/youtube.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if current_artist.sns_account(sns_name: 'youtube').present? %>
+                  <%= link_to current_artist.sns_account(sns_name: 'youtube'),
+                  'https://www.youtube.com/user/'+ current_artist.sns_account(sns_name: 'youtube'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
             </tr>
           </table>
         </td>

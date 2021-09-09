@@ -130,6 +130,21 @@ Artist.create(
   address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
 ) unless Artist.find_by(email: "crow@example.com").present?
 
+MasterSnsService.create(
+  name: "twitter"
+) unless MasterSnsService.find_by(name: "twitter").present?
+
+MasterSnsService.create(
+  name: "facebook"
+) unless MasterSnsService.find_by(name: "facebook").present?
+
+MasterSnsService.create(
+  name: "youtube"
+) unless MasterSnsService.find_by(name: "youtube").present?
+
+MasterSnsService.create(
+  name: "instagram"
+) unless MasterSnsService.find_by(name: "instagram").present?
 
 
 

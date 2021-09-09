@@ -7,3 +7,10 @@
     width: calc(100%/5);
   }
 }
+
+.sns_account_list {
+  min-height: 10em;
+  tr {
+    height: 2.5em;
+  }
+}

@@ -1,4 +1,6 @@
 class Artist < ApplicationRecord
+  has_many :artist_sns_accounts
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :code, presence: true
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
@@ -12,4 +14,10 @@ class Artist < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def sns_account(sns_name: nil)
+    artist_sns_accounts.find_by(
+      master_sns_service_id: MasterSnsService.sns_service_id(sns_name)
+    )
+  end
 end

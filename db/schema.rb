@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_015310) do
+ActiveRecord::Schema.define(version: 2021_09_09_085752) do
+
+  create_table "artist_sns_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.bigint "master_sns_service_id"
+    t.string "account_path", null: false, comment: "アカウント名"
+    t.index ["artist_id"], name: "index_artist_sns_accounts_on_artist_id"
+    t.index ["master_sns_service_id"], name: "index_artist_sns_accounts_on_master_sns_service_id"
+  end
 
   create_table "artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "code", null: false, comment: "アーティストコード"
@@ -36,4 +44,10 @@ ActiveRecord::Schema.define(version: 2021_09_04_015310) do
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
   end
 
+  create_table "master_sns_services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false, comment: "SNS名"
+    t.boolean "delete_flg", default: false, null: false
+  end
+
+  add_foreign_key "artist_sns_accounts", "artists"
 end

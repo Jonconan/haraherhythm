@@ -1,0 +1,2 @@
+class ArtistSnsAccount < ApplicationRecord
+end
