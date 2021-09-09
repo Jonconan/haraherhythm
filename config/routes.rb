@@ -21,4 +21,8 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show] do
   end
+
+  namespace :mypage do
+    get '/', action: :index
+  end
 end

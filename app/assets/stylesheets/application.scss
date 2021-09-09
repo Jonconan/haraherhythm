@@ -68,6 +68,33 @@ header {
   background: #ebf397;
   list-style: none;
   overflow: hidden;
+
+  ul {
+    padding-inline-start: 0;
+  }
+  li {
+    width: 140px;
+    list-style: none;
+    text-align: center;
+    float: left;
+  }
+  li a {
+    text-decoration: none;
+    color: #1650dc;
+    font-weight: bold;
+  }
+  img.current_artist_icon {
+    background: #FFF;
+    margin-top: -10px;
+    width: 40px;
+    border-radius: 1em;
+  }
+  .header-left {
+    position: fixed;
+  }
+  .header-right {
+    float: right;
+  }
 }
 contents {
   padding: 50px 0 0 0;
@@ -141,7 +168,6 @@ contents {
   }
 }
 footer {
-  width: 100%;
   height: 30px;
   padding: 5px 10px 20px 10px;
   background: #ebf397;

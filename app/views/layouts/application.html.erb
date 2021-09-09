@@ -10,18 +10,14 @@
 
   <body>
     <header>
-      header
+      <%= render 'layouts/header' %>
     </header>
     <contents>
-      <div class="sidebar">
-        <% if current_artist.present? %>
-          <%= link_to "ログアウト", artist_sign_out_path %>
-        <% else %>
-          <%= link_to "新規登録", new_artist_registration_path %>
-          <%= link_to "ログイン", new_artist_session_path %>
-        <% end %>
-        sidebar menu
-      </div>
+      <% if current_artist.present? %>
+        <%= render 'layouts/sidebar_artist' %>
+      <% else %>
+        <%= render 'layouts/sidebar' %>
+      <% end %>
       <div class="main">
         <%= yield %>
       </div>

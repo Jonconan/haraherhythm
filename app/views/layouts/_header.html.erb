@@ -1,0 +1,32 @@
+<div class="header-left">
+  <ul>
+    <li><%= link_to "トップページ", :root %></li>
+  </ul>
+</div>
+<div class="header-right">
+  <ul>
+    <li>
+      <% if current_artist.present? %>
+        <%= link_to "ダッシュボード", '/mypage' %>
+      <% else %>
+        <%= link_to "新規登録", new_artist_registration_path %>
+      <% end %>
+    </li>
+    <li>
+      <% if current_artist.present? %>
+        <%= link_to "ログアウト", artist_sign_out_path %>
+      <% else %>
+        <%= link_to "ログイン", new_artist_session_path %>
+      <% end %>
+    </li>
+    <li>
+      <% if current_artist.present? %>
+        <%= link_to mypage_path do %>
+          <%= image_tag 'artists/joker.png', :class => 'current_artist_icon' %>
+        <% end %>
+      <% else %>
+        <%= image_tag 'common/man.png', :class => 'current_artist_icon' %>
+      <% end %>
+    </li>
+  </ul>
+</div>
