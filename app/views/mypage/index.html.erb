@@ -8,7 +8,11 @@
 <ul class="artist-profile">
   <li>
     <div class="thumbnail">
-      <%= image_tag 'artists/joker.png', :size =>'320x320' %>
+      <% if current_artist.thumbnail.attached? %>
+        <%= image_tag url_for(current_artist.thumbnail), :size =>'320x320' %>
+      <% else %>
+        <%= image_tag 'common/default.png', :size =>'320x320' %>
+      <% end %>
     </div>
     <ul class="review-list">
       <li><%#= image_tag 'friends.png', :class => 'icon', :size =>'16x16' %> 10</li>

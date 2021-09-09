@@ -11,7 +11,6 @@ class CreateArtists < ActiveRecord::Migration[6.0]
 
       t.string :name, null: false, comment: "本名（非公開）"
       t.string :nickname, null: false, comment: "表示名"
-      t.string :thumbnail, comment: "アイコン"
       t.text   :description, comment: "自己紹介"
       t.date   :birthday, comment: "誕生日"
       t.string :postal_code, null: false, comment: "郵便番号"

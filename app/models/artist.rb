@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
   has_many :artist_sns_accounts
+  has_one_attached :thumbnail
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :code, presence: true
