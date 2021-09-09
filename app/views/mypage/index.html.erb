@@ -1,1 +1,119 @@
-<%= current_artist.nickname %>
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li><%= current_artist.nickname %>さんのマイページ</li>
+  </ul>
+</div>
+<h2><%= current_artist.nickname %>さんのプロフィール</h2>
+<ul class="artist-profile">
+  <li>
+    <div class="thumbnail">
+      <%= image_tag 'artists/joker.png', :size =>'320x320' %>
+    </div>
+    <ul class="review-list">
+      <li><%#= image_tag 'friends.png', :class => 'icon', :size =>'16x16' %> 10</li>
+      <li><%#= image_tag 'good.png', :class => 'icon', :size =>'16x16' %> 20</li>
+      <li><%#= image_tag 'comment.png', :class => 'icon', :size =>'16x16' %>  3</li>
+    </ul>
+  </li>
+  <li>
+    <table>
+      <tr>
+        <th>ユーザー名</th><td>
+          <%= current_artist.nickname %><br>
+          本名：<%= current_artist.name %>（非公開）
+        </td>
+      </tr>
+      <tr>
+        <th>誕生日</th><td><%= current_artist.birthday.strftime("%m月 %d日") %></td>
+      </tr>
+      <tr>
+        <th>SNS</th>
+        <td>
+          <table>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'twitter.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.twitter_id, 'https://twitter.com/'+@user.twitter_id, target: :_blank %></td>
+            </tr>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'facebook.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.facebook_id, 'https://www.facebook.com/'+@user.facebook_id, target: :_blank %></td>
+            </tr>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'github.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.github_id, 'https://github.com/'+@user.github_id, target: :_blank %></td>
+            </tr>
+            <tr style="height:40px;">
+              <td class="sns"><%#= image_tag 'youtube.png', :class => 'sns-icon', :size =>'20x20' %></td>
+              <td class="sns-id"><%#= link_to @user.youtube_id, 'https://www.youtube.com/user/'+@user.youtube_id, target: :_blank %></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <th>ホームページ</th><td>
+          <% if current_artist.website_url.present? %>
+            <%= link_to current_artist.website_url, current_artist.website_url, target: :_blank %>
+          <% else %>
+            未設定
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </li>
+</ul>
+
+<ul class="artist-button">
+  <li>
+    <%= link_to 'プロフィールを編集する', mypage_edit_path, class: 'btn-square-slant' %>
+  </li>
+  <li>
+    <%= link_to '自分のページを確認する',
+      artist_path(artist_id: current_artist.id), target: '_blank',
+      class: 'btn-square-slant' %>
+  </li>
+</ul>
+
+<div class="mypage-profile">
+  <div class="profile-contents">
+    <div class="tabs">
+      <input id="tab1" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="tab1">自己紹介</label>
+      <input id="tab2" type="radio" name="tab_item">
+      <label class="tab_item" for="tab2">自己紹介2</label>
+      <input id="tab3" type="radio" name="tab_item">
+      <label class="tab_item" for="tab3">自己紹介3</label>
+      <input id="tab4" type="radio" name="tab_item">
+      <label class="tab_item" for="tab4">自己紹介4</label>
+      <input id="tab5" type="radio" name="tab_item">
+      <label class="tab_item" for="tab5">自己紹介5</label>
+
+      <div class="tab_content" id="tab1_content">
+        <div class="tab_content_description">
+          <p>職務経歴をずらずらーーーっとなんかうまい感じに1</p>
+        </div>
+      </div>
+      <div class="tab_content" id="tab2_content">
+        <div class="tab_content_description">
+          <p>職務経歴をずらずらーーーっとなんかうまい感じに2</p>
+        </div>
+      </div>
+      <div class="tab_content" id="tab3_content">
+        <div class="tab_content_description">
+          <p>職務経歴をずらずらーーーっとなんかうまい感じに3</p>
+        </div>
+      </div>
+      <div class="tab_content" id="tab4_content">
+        <div class="tab_content_description">
+          <p>職務経歴をずらずらーーーっとなんかうまい感じに4</p>
+        </div>
+      </div>
+      <div class="tab_content" id="tab5_content">
+        <div class="tab_content_description">
+          <p>職務経歴をずらずらーーーっとなんかうまい感じに5</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

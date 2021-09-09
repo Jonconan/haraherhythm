@@ -17,7 +17,7 @@ class Artists::RegistrationsController < Devise::RegistrationsController
       @artist.password = params[:artist][:password]
       if @artist.valid?
         @artist.save!
-        redirect_to root_path
+        redirect_to mypage_path
       else
         render :new
       end

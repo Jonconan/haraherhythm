@@ -24,5 +24,7 @@ Rails.application.routes.draw do
 
   namespace :mypage do
     get '/', action: :index
+    get :edit
+    post :update
   end
 end
