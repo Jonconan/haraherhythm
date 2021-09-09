@@ -10,59 +10,128 @@
 
 <%= form_for(@artist, url: mypage_update_path(@artist), method: :post) do |f| %>
   <%= render "artists/shared/error_messages", resource: @artist %>
-  <table class="new-artists">
-    <tr>
-      <th class="require">本名（非公開）</th>
-      <td><%= f.text_field :name %></td>
-    </tr>
-    <tr>
-      <th class="require">表示名</th>
-      <td><%= f.text_field :nickname %></td>
-    </tr>
-    <tr>
-      <th class="require">メールアドレス</th>
-      <td><%= f.email_field :email %></td>
-    </tr>
-    <tr>
-      <th>アイコン</th>
-      <td>
-        <%= f.file_field :thumbnail %>
-      </td>
-    </tr>
-    <tr>
-      <th>誕生日</th>
-      <td>
-        <%= f.date_field :birthday %><br>
-        <span>※月日のみ表示されます</span>
-      </td>
-    </tr>
-    <tr>
-      <th class="require">郵便番号</th>
-      <td><%= f.text_field :postal_code %></td>
-    </tr>
-    <tr>
-      <th class="require">都道府県</th>
-      <td><%= f.text_field :address_1 %></td>
-    </tr>
-    <tr>
-      <th class="require">市区町村</th>
-      <td><%= f.text_field :address_2 %></td>
-    </tr>
-    <tr>
-      <th class="require">番地等</th>
-      <td><%= f.text_field :address_3 %></td>
-    </tr>
-    <tr>
-      <th>WebサイトのURL</th>
-      <td><%= f.text_field :website_url %></td>
-    </tr>
-    <tr>
-      <th>自己紹介</th>
-      <td><%= f.text_area :description %></td>
-    </tr>
-  </table>
+  <div class="mypage-profile profile-edit">
+    <div class="profile-contents">
+      <div class="tabs">
+        <input id="tab1" type="radio" name="tab_item" checked>
+        <label class="tab_item" for="tab1">基本情報</label>
+        <input id="tab2" type="radio" name="tab_item">
+        <label class="tab_item" for="tab2">自己紹介</label>
+        <input id="tab3" type="radio" name="tab_item">
+        <label class="tab_item" for="tab3">SNS情報</label>
+        <input id="tab4" type="radio" name="tab_item">
+        <label class="tab_item" for="tab4">自己紹介4</label>
+        <input id="tab5" type="radio" name="tab_item">
+        <label class="tab_item" for="tab5">自己紹介5</label>
+
+        <div class="tab_content" id="tab1_content">
+          <div class="tab_content_description">
+            <table class="new-artists">
+              <tr>
+                <th class="require">本名（非公開）</th>
+                <td><%= f.text_field :name %></td>
+              </tr>
+              <tr>
+                <th class="require">表示名</th>
+                <td><%= f.text_field :nickname %></td>
+              </tr>
+              <tr>
+                <th class="require">メールアドレス</th>
+                <td><%= f.email_field :email %></td>
+              </tr>
+              <tr>
+                <th>誕生日</th>
+                <td>
+                  <%= f.date_field :birthday %><br>
+                  <span>※月日のみ表示されます</span>
+                </td>
+              </tr>
+              <tr>
+                <th class="require">郵便番号</th>
+                <td><%= f.text_field :postal_code %></td>
+              </tr>
+              <tr>
+                <th class="require">都道府県</th>
+                <td><%= f.text_field :address_1 %></td>
+              </tr>
+              <tr>
+                <th class="require">市区町村</th>
+                <td><%= f.text_field :address_2 %></td>
+              </tr>
+              <tr>
+                <th class="require">番地等</th>
+                <td><%= f.text_field :address_3 %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="tab_content" id="tab2_content">
+          <div class="tab_content_description">
+            <table class="new-artists">
+              <tr>
+                <th>アイコン</th>
+                <td>
+                  <%= f.file_field :thumbnail %>
+                </td>
+              </tr>
+              <tr>
+                <th>自己紹介</th>
+                <td><%= f.text_area :description %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="tab_content" id="tab3_content">
+          <div class="tab_content_description">
+            <table class="new-artists">
+              <tr>
+                <th>twitter</th>
+                <td>
+                  <%= f.text_field :twitter, value: current_artist.sns_account(sns_name: 'twitter') %>
+                </td>
+              </tr>
+              <tr>
+                <th>facebook</th>
+                <td>
+                  <%= f.text_field :facebook, value: current_artist.sns_account(sns_name: 'facebook') %>
+                </td>
+              </tr>
+              <tr>
+                <th>instagram</th>
+                <td>
+                  <%= f.text_field :instagram, value: current_artist.sns_account(sns_name: 'instagram') %>
+                </td>
+              </tr>
+              <tr>
+                <th>youtube</th>
+                <td>
+                  <%= f.text_field :youtube, value: current_artist.sns_account(sns_name: 'youtube') %>
+                </td>
+              </tr>
+              <tr>
+                <th>WebサイトのURL</th>
+                <td><%= f.text_field :website_url %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="tab_content" id="tab4_content">
+          <div class="tab_content_description">
+            <p>職務経歴をずらずらーーーっとなんかうまい感じに4</p>
+          </div>
+        </div>
+        <div class="tab_content" id="tab5_content">
+          <div class="tab_content_description">
+            <p>職務経歴をずらずらーーーっとなんかうまい感じに5</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
   <div class="actions">
     <%= f.submit "プロフィール更新" %>
   </div>
+
 <% end %>

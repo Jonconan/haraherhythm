@@ -35,7 +35,7 @@
         <th>SNS</th>
         <td>
           <table class="sns_account_list">
-          <% if @artist.sns_account(sns_name: 'twitter').present? %>class="sns_account_list">
+            <% if @artist.sns_account(sns_name: 'twitter').present? %>
               <tr>
                 <td class="sns"><%= image_tag 'common/twitter.png', :class => 'sns-icon' %></td>
                 <td class="sns-id">

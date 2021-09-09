@@ -1,6 +1,7 @@
 class Artist < ApplicationRecord
   has_many :artist_sns_accounts
   has_one_attached :thumbnail
+  attr_accessor :twitter, :facebook, :instagram, :youtube
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :code, presence: true
@@ -17,8 +18,10 @@ class Artist < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def sns_account(sns_name: nil)
-    artist_sns_accounts.find_by(
+    account = artist_sns_accounts.find_by(
       master_sns_service_id: MasterSnsService.sns_service_id(sns_name)
     )
+    return account.account_path if account.present?
+    nil
   end
 end
