@@ -1,0 +1,68 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
+    <li>プロフィール編集</li>
+  </ul>
+</div>
+
+<h2>プロフィール編集</h2>
+
+<%= form_for(@artist, url: mypage_update_path(@artist), method: :post) do |f| %>
+  <%= render "artists/shared/error_messages", resource: @artist %>
+  <table class="new-artists">
+    <tr>
+      <th class="require">本名（非公開）</th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th class="require">表示名</th>
+      <td><%= f.text_field :nickname %></td>
+    </tr>
+    <tr>
+      <th class="require">メールアドレス</th>
+      <td><%= f.email_field :email %></td>
+    </tr>
+    <tr>
+      <th>アイコン</th>
+      <td>
+
+      </td>
+    </tr>
+    <tr>
+      <th>誕生日</th>
+      <td>
+        <%= f.date_field :birthday %><br>
+        <span>※月日のみ表示されます</span>
+      </td>
+    </tr>
+    <tr>
+      <th class="require">郵便番号</th>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+      <th class="require">都道府県</th>
+      <td><%= f.text_field :address_1 %></td>
+    </tr>
+    <tr>
+      <th class="require">市区町村</th>
+      <td><%= f.text_field :address_2 %></td>
+    </tr>
+    <tr>
+      <th class="require">番地等</th>
+      <td><%= f.text_field :address_3 %></td>
+    </tr>
+    <tr>
+      <th>WebサイトのURL</th>
+      <td><%= f.text_field :website_url %></td>
+    </tr>
+    <tr>
+      <th>自己紹介</th>
+      <td><%= f.text_area :description %></td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit "プロフィール更新" %>
+  </div>
+<% end %>
