@@ -130,6 +130,32 @@ Artist.create(
   address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
 ) unless Artist.find_by(email: "crow@example.com").present?
 
+Artist.create(
+  code: SecureRandom.alphanumeric,
+  email: "wolf@example.com",
+  password: "password",
+  name: "長谷川 善吉",
+  nickname: "ウルフ",
+  birthday: "1991-06-02",
+  postal_code: "3500214",
+  address_1: "埼玉県",
+  address_2: "坂戸市千代田",
+  address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
+) unless Artist.find_by(email: "wolf@example.com").present?
+
+Artist.create(
+  code: SecureRandom.alphanumeric,
+  email: "sofee@example.com",
+  password: "password",
+  name: "ソ フィア",
+  nickname: "ソフィー",
+  birthday: "1991-06-02",
+  postal_code: "3500214",
+  address_1: "埼玉県",
+  address_2: "坂戸市千代田",
+  address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
+) unless Artist.find_by(email: "sofee@example.com").present?
+
 MasterSnsService.create(
   name: "twitter"
 ) unless MasterSnsService.find_by(name: "twitter").present?
