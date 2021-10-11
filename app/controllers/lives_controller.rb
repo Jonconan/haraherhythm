@@ -1,5 +1,5 @@
 class LivesController < ApplicationController
   def index
-    @id = params[:live_id]
+    @live = Live.find_by(id: params[:life_id])
   end
 end

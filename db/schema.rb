@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_080120) do
+ActiveRecord::Schema.define(version: 2021_10_11_125236) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -64,6 +64,15 @@ ActiveRecord::Schema.define(version: 2021_10_11_080120) do
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
   end
 
+  create_table "live_artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "live_id"
+    t.bigint "artist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_live_artists_on_artist_id"
+    t.index ["live_id"], name: "index_live_artists_on_live_id"
+  end
+
   create_table "lives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "code", null: false, comment: "ライブコード"
     t.string "title", null: false, comment: "ライブ名"
@@ -83,4 +92,6 @@ ActiveRecord::Schema.define(version: 2021_10_11_080120) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "artist_sns_accounts", "artists"
+  add_foreign_key "live_artists", "artists"
+  add_foreign_key "live_artists", "lives", column: "live_id"
 end

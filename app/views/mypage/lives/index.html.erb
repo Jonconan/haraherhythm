@@ -15,14 +15,6 @@
   まだライブが作成されていません。
 <% else %>
   <ul class="item-list">
-    <% @lives.each do |live| %>
-      <%= link_to life_path(life_id: live.id) do %>
-        <li class="item-card">
-          <div class="date"><%= live.date.strftime('%Y.%m.%d') %></div>
-          <%= image_tag 'live.jpg', class: 'thumbnail' %>
-          <div class="title"><%= live.title %></div>
-        </li>
-      <% end %>
-    <% end %>
+    <%= render partial: 'common/live_cards', locals: { lives: @lives } %>
   </ul>
 <% end %>

@@ -1,6 +1,8 @@
 class Artist < ApplicationRecord
   has_many :artist_sns_accounts
   has_one_attached :thumbnail
+  has_many :live_artists
+  has_many :lives, through: :live_artists
   attr_accessor :twitter, :facebook, :instagram, :youtube
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -15,6 +15,9 @@ class Mypage::LivesController < ApplicationController
     live.code = SecureRandom.alphanumeric
     if live.valid?
       live.save
+      live.live_artists.create(
+        artist_id: current_artist.id
+      )
       redirect_to mypage_lives_path and return
     else
       render :new
@@ -25,7 +28,7 @@ class Mypage::LivesController < ApplicationController
 
   def live_params
     params.permit(
-      :title, :description, :date, :venue, :website_url
+      :title, :description, :thumbnail, :date, :venue, :website_url
     )
   end
 end
