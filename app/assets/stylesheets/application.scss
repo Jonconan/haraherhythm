@@ -71,6 +71,7 @@ header {
 
   ul {
     padding-inline-start: 0;
+    margin-block-start: 1rem;
   }
   li {
     width: 140px;
@@ -104,10 +105,78 @@ contents {
   display: flex;
 
   .sidebar {
+    color: #EEE;
     width: 30%;
     max-width: 300px;
-    background: #DDD;
+    background: rgb(100, 100, 100);
     padding: 10px;
+
+    .profile {
+      padding: 5px;
+      display: flex;
+
+      .thumbnail {
+        width: 30%;
+        padding: 0.3rem;
+        img {
+          background: #FFF;
+          width: 100%;
+          border-radius: 10px;
+        }
+      }
+      .description {
+        padding: 1rem 0.3rem;
+
+        .nickname {
+          font-size: 1.1rem;
+        }
+        .name {
+          font-size: 0.7rem;
+        }
+        ul {
+          padding-inline-start: 0;
+          margin-block-start: 0.3rem;
+        }
+        li {
+          list-style: none;
+          text-align: center;
+          float: left;
+          font-size: 0.4rem;
+          padding-right: 5px;
+        }
+      }
+    }
+
+    .sidebar_menu {
+      padding-inline-start: 0.5rem;
+
+      a {
+        color: #EEE;
+      }
+
+      li {
+        padding: 0.9rem 0;
+        padding-left: 0.5rem;
+        display: flex;
+        .icon {
+          width: 18%;
+          text-align: center;
+        }
+        i {
+          margin-right: 0.5rem;
+          font-size: 1.3rem;
+        }
+      }
+
+      li:hover {
+        // background: #c9e2f7;
+        background: #888;
+        transition: all 0.2s;
+        transform: scale(1.15, 1.15);
+        border-radius: 0.8rem;
+        box-shadow: 0.5rem 0.5rem 0.5rem #222;
+      }
+    }
   }
 
   .main {

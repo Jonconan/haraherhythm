@@ -1,6 +1,45 @@
 <div class="sidebar">
   <% if current_artist.present? %>
-    <%= link_to "ログアウト", artist_sign_out_path %>
+    <div class="profile">
+      <div class="thumbnail">
+        <% if current_artist.thumbnail.attached? %>
+          <%= image_tag url_for(current_artist.thumbnail), class: 'current_artist_icon' %>
+        <% else %>
+          <%= image_tag 'common/default.png', class: 'current_artist_icon' %>
+        <% end %>
+      </div>
+      <div class="description">
+        <div class="nickname"><%= current_artist.nickname %></div>
+        <div class="name"><%= current_artist.name %></div>
+        <ul class="role">
+          <li>管理者</li>
+          <li>アーティスト</li>
+        </ul>
+      </div>
+    </div>
+    <h2>管理メニュー</h2>
+    <ul class="sidebar_menu">
+      <%= link_to mypage_path do %>
+        <li><div class="icon"><i class="fas fa-chart-line"></i></div>ダッシュボード</li>
+      <% end %>
+      <li><div class="icon"><i class="fas fa-money-bill-wave"></i></div>売上情報</li>
+      <li><div class="icon"><i class="fas fa-shopping-basket"></i></div>商品情報</li>
+      <li><div class="icon"><i class="fas fa-glass-cheers"></i></div>ライブ情報</li>
+      <li><div class="icon"><i class="fas fa-users"></i></div>フォロワー情報</li>
+    </ul>
+    <h2>その他</h2>
+    <ul class="sidebar_menu">
+      <%= link_to mypage_edit_path do %>
+        <li><div class="icon"><i class="fas fa-user-edit"></i></div>プロフィール更新</li>
+      <% end %>
+      <%= link_to artist_path(artist_id: current_artist.id) do %>
+        <li><div class="icon"><i class="fas fa-house-user"></i></div>自分のページを確認</li>
+      <% end %>
+      <%= link_to artist_sign_out_path do %>
+        <li><div class="icon"><i class="fas fa-sign-out-alt"></i></div>ログアウト</li>
+      <% end %>
+    </ul>
+
   <% else %>
     <%= link_to "新規登録", new_artist_registration_path %>
     <%= link_to "ログイン", new_artist_session_path %>
