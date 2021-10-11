@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_124429) do
+ActiveRecord::Schema.define(version: 2021_10_11_080120) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(version: 2021_09_09_124429) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_artists_on_email", unique: true
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
+  end
+
+  create_table "lives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "code", null: false, comment: "ライブコード"
+    t.string "title", null: false, comment: "ライブ名"
+    t.text "description", comment: "ライブ情報"
+    t.date "date", null: false, comment: "開催日"
+    t.string "venue", null: false, comment: "ライブ会場"
+    t.string "website_url", comment: "関連サイトのURL"
+    t.boolean "delete_flg", default: false, null: false, comment: "削除フラグ"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "master_sns_services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -20,11 +20,13 @@
     <h2>管理メニュー</h2>
     <ul class="sidebar_menu">
       <%= link_to mypage_path do %>
-        <li><div class="icon"><i class="fas fa-chart-line"></i></div>ダッシュボード</li>
+        <li><div class="icon"><i class="fas fa-tachometer-alt"></i></div>ダッシュボード</li>
       <% end %>
-      <li><div class="icon"><i class="fas fa-money-bill-wave"></i></div>売上情報</li>
+      <li><div class="icon"><i class="fas fa-chart-line"></i></div>売上情報</li>
       <li><div class="icon"><i class="fas fa-shopping-basket"></i></div>商品情報</li>
-      <li><div class="icon"><i class="fas fa-glass-cheers"></i></div>ライブ情報</li>
+      <%= link_to mypage_lives_path do %>
+        <li><div class="icon"><i class="fas fa-glass-cheers"></i></div>ライブ情報</li>
+      <% end %>
       <li><div class="icon"><i class="fas fa-users"></i></div>フォロワー情報</li>
     </ul>
     <h2>その他</h2>

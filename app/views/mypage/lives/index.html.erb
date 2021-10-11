@@ -1,0 +1,28 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
+    <li>ライブ情報</li>
+  </ul>
+</div>
+<h2>ライブ一覧</h2>
+<div class="new-live">
+  <%= link_to new_mypage_life_path do %>
+    <div class="create-live-button"><i class="fas fa-edit"></i>新規ライブ作成</div>
+  <% end %>
+</div>
+<% unless @lives.present? %>
+  まだライブが作成されていません。
+<% else %>
+  <ul class="item-list">
+    <% @lives.each do |live| %>
+      <%= link_to life_path(life_id: live.id) do %>
+        <li class="item-card">
+          <div class="date"><%= live.date.strftime('%Y.%m.%d') %></div>
+          <%= image_tag 'live.jpg', class: 'thumbnail' %>
+          <div class="title"><%= live.title %></div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

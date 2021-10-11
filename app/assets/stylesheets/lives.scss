@@ -70,3 +70,27 @@
     }
   }
 }
+
+.new-live {
+  margin: 1rem;
+
+  .create-live-button {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.5rem;
+    background: #4b2cff;
+    color: #FFF;
+    text-align: center;
+    border-radius: 3rem;
+    box-shadow: 10px 10px 21px -10px rgba(0,0,0,0.6);
+
+    i {
+      font-size: 1.1rem;
+      padding-right: 0.5rem;
+    }
+  }
+  .create-live-button:hover {
+    transition: all 0.2s;
+    background: #6c53ff;
+  }
+}

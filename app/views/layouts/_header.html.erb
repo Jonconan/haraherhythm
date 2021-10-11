@@ -6,16 +6,12 @@
 <div class="header-right">
   <ul>
     <li>
-      <% if current_artist.present? %>
-        <%= link_to "ダッシュボード", '/mypage' %>
-      <% else %>
+      <% unless current_artist.present? %>
         <%= link_to "新規登録", new_artist_registration_path %>
       <% end %>
     </li>
     <li>
-      <% if current_artist.present? %>
-        <%= link_to "ログアウト", artist_sign_out_path %>
-      <% else %>
+      <% unless current_artist.present? %>
         <%= link_to "ログイン", new_artist_session_path %>
       <% end %>
     </li>
