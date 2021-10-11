@@ -24,6 +24,10 @@ class Mypage::LivesController < ApplicationController
     end
   end
 
+  def show
+    @live = Live.find_by(id: params[:id])
+  end
+
   private
 
   def live_params

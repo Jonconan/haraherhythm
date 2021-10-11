@@ -1,0 +1,9 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
+    <li class="before-page"><%= link_to 'ライブ情報', mypage_lives_path %></li>
+    <li><%= @live.title %>の情報を確認する</li>
+  </ul>
+</div>
+<h2><%= @live.title %>の情報を確認する</h2>
