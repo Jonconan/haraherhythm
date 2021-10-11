@@ -1,13 +1,17 @@
 <div class="breadcrumb">
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
-    <li>○○○ライブ</li>
+    <li><%= @live.title %></li>
   </ul>
 </div>
-<h2>○○○ライブ</h2>
+<h2><%= @live.title %></h2>
 <div class="live-contents">
   <div class="live-thumbnail">
-    <%= image_tag 'live.jpg', class: 'thumbnail' %>
+    <% if @live.thumbnail.attached? %>
+      <%= image_tag url_for(@live.thumbnail), class: 'thumbnail' %>
+    <% else %>
+      <%= image_tag 'live.jpg', class: 'thumbnail' %>
+    <% end %>
 
     <ul class="artist-list">
       <% @live.artists.each do |artist| %>
@@ -25,8 +29,6 @@
     </ul>
   </div>
 </div>
-
-
 
 
 <h2>物販一覧</h2>

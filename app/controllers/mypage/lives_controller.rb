@@ -4,7 +4,7 @@ class Mypage::LivesController < ApplicationController
   before_action :artist_check_sessions
 
   def index
-    @lives = Live.all.order(date: :desc)
+    @lives = Live.default_order
   end
 
   def new

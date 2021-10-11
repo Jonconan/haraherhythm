@@ -9,9 +9,9 @@
   <li>
     <div class="thumbnail">
       <% if current_artist.thumbnail.attached? %>
-        <%= image_tag url_for(current_artist.thumbnail), :size =>'320x320' %>
+        <%= image_tag url_for(current_artist.thumbnail) %>
       <% else %>
-        <%= image_tag 'common/default.png', :size =>'320x320' %>
+        <%= image_tag 'common/default.png' %>
       <% end %>
     </div>
     <ul class="review-list">

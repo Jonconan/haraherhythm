@@ -24,6 +24,13 @@ ul.artist-profile > li {
   border-radius: 20px;
   box-sizing: border-box;
   padding: 5px;
+
+  .thumbnail {
+    img {
+      width: 320px;
+      height: 320px;
+    }
+  }
 }
 .sns-icon {
   border-radius: 0px;
