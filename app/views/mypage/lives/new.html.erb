@@ -6,7 +6,7 @@
     <li>ライブ新規作成</li>
   </ul>
 </div>
-<h2>ライブ作成</h2>
+<h2>新規ライブ作成</h2>
 <div class="new-live">
   <%= form_with url: mypage_lives_path, method: :post do |f| %>
     <table class="new-artists">
@@ -15,7 +15,7 @@
         <td><%= f.text_field :title %></td>
       </tr>
       <tr>
-        <th>自己紹介</th>
+        <th>ライブの紹介文</th>
         <td><%= f.text_area :description %></td>
       </tr>
       <tr>

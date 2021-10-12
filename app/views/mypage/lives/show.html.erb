@@ -7,3 +7,69 @@
   </ul>
 </div>
 <h2><%= @live.title %>の情報を確認する</h2>
+<table class="mypage-live-settings">
+  <tr>
+    <th>アクション</th>
+    <td>
+      <div class="edit-live">
+        <div class="create-live-button">
+          <%= link_to new_mypage_life_path do %>
+            <i class="fas fa-edit"></i>ライブを編集する
+          <% end %>
+        </div>
+        <div class="create-live-button">
+          <%= link_to new_mypage_life_path do %>
+            <i class="fas fa-edit"></i>ライブを編集する
+          <% end %>
+        </div>
+      </div>
+    </td>
+  <tr>
+    <th>ライブ名</th>
+    <td><%= @live.title %></td>
+  </tr>
+  <tr>
+    <th>開催日</th>
+    <td><%= @live.date.strftime('%Y年%m月%d日') %></td>
+  </tr>
+  <tr>
+    <th>
+      ライブ参加者
+      <div class="live-button join">
+        <i class="fas fa-door-open"></i>参加する
+      </div>
+      <div class="live-button left">
+        <i class="fas fa-sign-in-alt"></i>退出する
+      </div>
+    </th>
+    <td class="live-join-artists">
+      <ul class="artist-list">
+        <% @live.artists.each do |artist| %>
+          <li class="artist-card">
+            <% if artist.thumbnail.attached? %>
+              <%= image_tag url_for(artist.thumbnail), class: 'thumbnail' %>
+            <% else %>
+              <%= image_tag 'common/default.png', class: 'thumbnail' %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th>ライブの画像</th>
+    <td>
+      <% if @live.thumbnail.attached? %>
+        <%= image_tag url_for(@live.thumbnail), class: 'live-thumbnail-img' %>
+      <% else %>
+        <%= image_tag 'live.jpg', class: 'live-thumbnail-img' %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>ライブ説明</th>
+    <td>
+      <pre><%= @live.description %></pre>
+    </td>
+  </tr>
+</table>
