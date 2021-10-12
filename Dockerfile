@@ -9,6 +9,7 @@ RUN apt-get update -qq && \
     apt-get update -qq && \
     apt-get install -y --no-install-recommends build-essential imagemagick libpq-dev
 RUN yarn install
+RUN yarn upgrade
 
 ENV TZ='Asia/Tokyo'
 
