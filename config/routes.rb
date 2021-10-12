@@ -27,6 +27,8 @@ Rails.application.routes.draw do
     get :edit
     post :update
     resources :lives, only: [:index, :new, :create, :show] do
+      get :join_live
+      get :left_live
     end
   end
 end

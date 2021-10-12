@@ -35,12 +35,19 @@
   <tr>
     <th>
       ライブ参加者
-      <div class="live-button join">
-        <i class="fas fa-door-open"></i>参加する
-      </div>
-      <div class="live-button left">
-        <i class="fas fa-sign-in-alt"></i>退出する
-      </div>
+      <% if @is_join %>
+        <div class="live-button left">
+          <%= link_to mypage_life_left_live_path(life_id: @live.id) do %>
+            <i class="fas fa-sign-in-alt"></i>不参加にする
+          <% end %>
+        </div>
+      <% else %>
+        <div class="live-button join">
+          <%= link_to mypage_life_join_live_path(life_id: @live.id) do %>
+            <i class="fas fa-door-open"></i>参加する
+          <% end %>
+        </div>
+      <% end %>
     </th>
     <td class="live-join-artists">
       <ul class="artist-list">

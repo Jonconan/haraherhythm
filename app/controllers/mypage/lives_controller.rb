@@ -26,6 +26,29 @@ class Mypage::LivesController < ApplicationController
 
   def show
     @live = Live.find_by(id: params[:id])
+    @is_join = @live.artists.include?(current_artist)
+  end
+
+  def join_live
+    live = Live.find_by(id: params[:life_id])
+    # もし現在ライブに参加していなかったら、ログイン中のアーティストを参加させる
+    unless live.artists.include?(current_artist)
+      live.live_artists.create(
+        artist_id: current_artist.id
+      )
+    end
+    redirect_to mypage_life_path(id: live.id) and return
+  end
+
+  def left_live
+    live = Live.find_by(id: params[:life_id])
+    # もし現在ライブに参加していたら、ログイン中のアーティストを削除する
+    if live.artists.include?(current_artist)
+      live.live_artists.find_by(
+        artist_id: current_artist.id
+      ).destroy
+    end
+    redirect_to mypage_life_path(id: live.id) and return
   end
 
   private
