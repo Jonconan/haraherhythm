@@ -7,8 +7,8 @@
 <h2><%= @live.title %></h2>
 <div class="live-contents">
   <div class="live-thumbnail">
-    <% if @live.thumbnail.attached? %>
-      <%= image_tag url_for(@live.thumbnail), class: 'thumbnail' %>
+    <% if @live.thumbnail.present? %>
+      <%= image_tag url_for(@live.thumbnail.url), class: 'thumbnail' %>
     <% else %>
       <%= image_tag 'live.jpg', class: 'thumbnail' %>
     <% end %>
@@ -17,8 +17,8 @@
       <% @live.artists.each do |artist| %>
         <%= link_to artist_path(artist_id: artist.id) do %>
         <li class="artist-card">
-          <% if artist.thumbnail.attached? %>
-            <%= image_tag url_for(artist.thumbnail), class: 'thumbnail' %>
+          <% if artist.thumbnail.present? %>
+            <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
           <% else %>
             <%= image_tag 'common/default.png', class: 'thumbnail' %>
           <% end %>

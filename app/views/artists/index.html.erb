@@ -8,8 +8,8 @@
 <ul class="artist-profile">
   <li>
     <div class="thumbnail">
-      <% if @artist.thumbnail.attached? %>
-        <%= image_tag url_for(@artist.thumbnail) %>
+      <% if @artist.thumbnail.present? %>
+        <%= image_tag url_for(@artist.thumbnail.url) %>
       <% else %>
         <%= image_tag 'common/default.png' %>
       <% end %>

@@ -1,5 +1,5 @@
 class Live < ApplicationRecord
-  has_one_attached :thumbnail
+  mount_uploader :thumbnail, ImageUploader
   has_many :live_artists
   has_many :artists, through: :live_artists
 

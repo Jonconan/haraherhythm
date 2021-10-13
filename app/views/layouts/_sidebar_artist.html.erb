@@ -2,8 +2,8 @@
   <% if current_artist.present? %>
     <div class="profile">
       <div class="thumbnail">
-        <% if current_artist.thumbnail.attached? %>
-          <%= image_tag url_for(current_artist.thumbnail), class: 'current_artist_icon' %>
+        <% if current_artist.thumbnail.present? %>
+          <%= image_tag url_for(current_artist.thumbnail.url), class: 'current_artist_icon' %>
         <% else %>
           <%= image_tag 'common/default.png', class: 'current_artist_icon' %>
         <% end %>

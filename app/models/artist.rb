@@ -1,6 +1,6 @@
 class Artist < ApplicationRecord
   has_many :artist_sns_accounts
-  has_one_attached :thumbnail
+  mount_uploader :thumbnail, ImageUploader
   has_many :live_artists
   has_many :life, through: :live_artists
   attr_accessor :twitter, :facebook, :instagram, :youtube

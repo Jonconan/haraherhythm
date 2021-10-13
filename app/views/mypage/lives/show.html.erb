@@ -48,8 +48,8 @@
       <ul class="artist-list">
         <% @live.artists.each do |artist| %>
           <li class="artist-card">
-            <% if artist.thumbnail.attached? %>
-              <%= image_tag url_for(artist.thumbnail), class: 'thumbnail' %>
+            <% if artist.thumbnail.present? %>
+              <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
             <% else %>
               <%= image_tag 'common/default.png', class: 'thumbnail' %>
             <% end %>
@@ -61,8 +61,8 @@
   <tr>
     <th>ライブの画像</th>
     <td>
-      <% if @live.thumbnail.attached? %>
-        <%= image_tag url_for(@live.thumbnail), class: 'live-thumbnail-img' %>
+      <% if @live.thumbnail.present? %>
+        <%= image_tag url_for(@live.thumbnail.url), class: 'live-thumbnail-img' %>
       <% else %>
         <%= image_tag 'live.jpg', class: 'live-thumbnail-img' %>
       <% end %>

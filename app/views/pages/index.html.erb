@@ -3,8 +3,8 @@
   <% @artists.each do |artist| %>
     <%= link_to artist_path(artist_id: artist.id) do %>
       <li class="artist-card">
-        <% if artist.thumbnail.attached? %>
-          <%= image_tag url_for(artist.thumbnail), class: 'thumbnail' %>
+        <% if artist.thumbnail.present? %>
+          <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
         <% else %>
           <%= image_tag 'common/default.png', class: 'thumbnail' %>
         <% end %>

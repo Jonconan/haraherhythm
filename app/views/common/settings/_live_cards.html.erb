@@ -2,8 +2,8 @@
   <%= link_to mypage_life_path(id: live.id) do %>
     <li class="item-card">
       <div class="date"><%= live.date.strftime('%Y.%m.%d') %></div>
-      <% if live.thumbnail.attached? %>
-        <%= image_tag url_for(live.thumbnail), class: 'thumbnail' %>
+      <% if live.thumbnail.present? %>
+        <%= image_tag url_for(live.thumbnail.url), class: 'thumbnail' %>
       <% else %>
         <%= image_tag 'live.jpg', class: 'thumbnail' %>
       <% end %>
