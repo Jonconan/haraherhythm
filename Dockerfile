@@ -1,15 +1,14 @@
 FROM ruby:2.7.4
 ENV APP_NAME haraherhythm
 
-RUN apt-get update -qq && \
-    apt-get install -y curl && \
-    curl -sL https://deb.nodesource.com/setup_14.x | bash - && \
-    apt-get install -y --no-install-recommends nodejs && \
-    npm install --global yarn && \
-    apt-get update -qq && \
-    apt-get install -y --no-install-recommends build-essential imagemagick libpq-dev
-RUN yarn install
-RUN yarn upgrade
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libgmp3-dev  \
+    ruby-dev  \
+    nodejs \
+    npm
+RUN npm install --global yarn
+RUN apt-get install libxml2-dev
 
 ENV TZ='Asia/Tokyo'
 
