@@ -100,7 +100,8 @@ header {
 }
 contents {
   padding: 50px 0 0 0;
-  width: 80%;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   min-height: 95%;
@@ -112,6 +113,10 @@ contents {
     min-width: 250px;
     background: rgb(100, 100, 100);
     padding: 10px;
+
+    @media screen and (max-width: 1024px) {
+      margin-right: 10px;
+    }
 
     .profile {
       padding: 5px;
