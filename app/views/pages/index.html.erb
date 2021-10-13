@@ -6,7 +6,7 @@
         <% if artist.thumbnail.attached? %>
           <%= image_tag url_for(artist.thumbnail), class: 'thumbnail' %>
         <% else %>
-          <%= image_tag 'common/default.png', :size =>'320x320' %>
+          <%= image_tag 'common/default.png', class: 'thumbnail' %>
         <% end %>
         <div class="title"><%= artist.nickname %></div>
       </li>
