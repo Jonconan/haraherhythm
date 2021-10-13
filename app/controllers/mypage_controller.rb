@@ -13,10 +13,17 @@ class MypageController < ApplicationController
     current_artist.update(artist_params)
     sns_list.each do |sns|
       if artist_params[sns.to_sym].present?
-        current_artist.artist_sns_accounts.create(
-          master_sns_service_id: MasterSnsService.sns_service_id(sns),
-          account_path: artist_params[sns.to_sym]
-        )
+        sns_id = MasterSnsService.sns_service_id(sns)
+        artist_sns_info = current_artist.artist_sns_accounts.find_by(master_sns_service_id: sns_id)
+        if artist_sns_info.present?
+          artist_sns_info.account_path = artist_params[sns.to_sym]
+          artist_sns_info.save
+        else
+          current_artist.artist_sns_accounts.create(
+            master_sns_service_id: sns_id,
+            account_path: artist_params[sns.to_sym]
+          )
+        end
       end
     end
     redirect_to mypage_path
