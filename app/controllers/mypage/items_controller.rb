@@ -1,6 +1,6 @@
 require 'securerandom'
 
-class Mypage::itemsController < ApplicationController
+class Mypage::ItemsController < ApplicationController
   before_action :artist_check_sessions
 
   def index
