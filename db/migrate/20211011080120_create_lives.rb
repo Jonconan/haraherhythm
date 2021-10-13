@@ -5,6 +5,7 @@ class CreateLives < ActiveRecord::Migration[6.0]
 
       t.string :title, null: false, comment: "ライブ名"
       t.text   :description, comment: "ライブ情報"
+      t.string :thumbnail, comment: "ライブ画像"
       t.date   :date, null: false, comment: "開催日"
       t.string :venue, null: false, comment: "ライブ会場"
       t.string :website_url, comment: "関連サイトのURL"
