@@ -1,0 +1,43 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
+    <li class="before-page"><%= link_to 'ライブ情報', mypage_lives_path %></li>
+    <li>ライブ新規作成</li>
+  </ul>
+</div>
+<h2>新規ライブ作成</h2>
+<div class="new-live">
+  <%= form_with url: mypage_lives_path, method: :post do |f| %>
+    <table class="new-artists">
+      <tr>
+        <th class="require">ライブ名</th>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <th>ライブの紹介文</th>
+        <td><%= f.text_area :description %></td>
+      </tr>
+      <tr>
+        <th>ライブ画像アップロード</th>
+        <td><%= f.file_field :thumbnail %></td>
+      </tr>
+      <tr>
+        <th class="require">開催日</th>
+        <td><%= f.date_field :date %></td>
+      </tr>
+      <tr>
+        <th class="require">ライブ会場情報</th>
+        <td><%= f.text_field :venue %></td>
+      </tr>
+      <tr>
+        <th>WebサイトのURL</th>
+        <td><%= f.text_field :website_url %></td>
+      </tr>
+    </table>
+
+    <div class="actions">
+      <%= f.submit "作成" %>
+    </div>
+  <% end %>
+</div>
