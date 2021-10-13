@@ -1,0 +1,26 @@
+<% items.each do |item| %>
+  <%= link_to item_path(id: item.id) do %>
+    <li class="item-card">
+      <div class="title"><%= item.name %></div>
+      <div class="description">
+        <% if item.thumbnail.present? %>
+          <%= image_tag url_for(item.thumbnail.url), class: 'thumbnail' %>
+        <% else %>
+          <%= image_tag 'live.jpg', class: 'thumbnail' %>
+        <% end %>
+        <ul class="artist-list">
+          <li class="artist-card">
+            <!-- 作者のアイコン -->
+            <% if item.artist.thumbnail.present? %>
+              <%= image_tag url_for(item.artist.thumbnail.url), class: 'thumbnail' %>
+            <% else %>
+              <%= image_tag 'common/default.png', class: 'thumbnail' %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="live">2021.09.10 〇〇〇イベント</div>
+      <div class="price"><%= shop_format(item.price) %></div>
+    </li>
+  <% end %>
+<% end %>
