@@ -13,12 +13,7 @@
     <td>
       <div class="edit-live">
         <div class="create-live-button">
-          <%= link_to new_mypage_life_path do %>
-            <i class="fas fa-edit"></i>ライブを編集する
-          <% end %>
-        </div>
-        <div class="create-live-button">
-          <%= link_to new_mypage_life_path do %>
+          <%= link_to edit_mypage_life_path(id: @live.id) do %>
             <i class="fas fa-edit"></i>ライブを編集する
           <% end %>
         </div>

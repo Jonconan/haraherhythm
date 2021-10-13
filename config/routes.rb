@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     get '/', action: :index
     get :edit
     post :update
-    resources :lives, only: [:index, :new, :create, :show] do
+    resources :lives, only: [:index, :new, :create, :show, :edit, :update] do
       get :join_live
       get :left_live
     end

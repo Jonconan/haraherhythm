@@ -10,6 +10,16 @@ class Mypage::LivesController < ApplicationController
   def new
   end
 
+  def edit
+    @live = Live.find_by(id: params[:id])
+  end
+
+  def update
+    live = Live.find_by(id: params[:id])
+    live.update(live_params)
+    redirect_to mypage_life_path(id: live.id) and return
+  end
+
   def create
     live = Live.new(live_params)
     live.code = SecureRandom.alphanumeric
