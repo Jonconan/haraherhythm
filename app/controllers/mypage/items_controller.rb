@@ -4,31 +4,29 @@ class Mypage::ItemsController < ApplicationController
   before_action :artist_check_sessions
 
   def index
-    @lives = Live.default_order
+    @items = current_artist.items
   end
 
   def new
   end
 
   def edit
-    @live = Live.find_by(id: params[:id])
+    @item = Item.find_by(id: params[:id])
   end
 
   def update
-    live = Live.find_by(id: params[:id])
+    live = Item.find_by(id: params[:id])
     live.update(live_params)
     redirect_to mypage_life_path(id: live.id) and return
   end
 
   def create
-    live = Live.new(live_params)
-    live.code = SecureRandom.alphanumeric
-    if live.valid?
-      live.save
-      live.live_artists.create(
-        artist_id: current_artist.id
-      )
-      redirect_to mypage_lives_path and return
+    item = current_artist.items.new(item_params)
+    item.code = SecureRandom.alphanumeric
+    item.sales_format_id = 0
+    if item.valid?
+      item.save
+      redirect_to mypage_items_path and return
     else
       render :new
     end
@@ -63,9 +61,9 @@ class Mypage::ItemsController < ApplicationController
 
   private
 
-  def live_params
+  def item_params
     params.permit(
-      :title, :description, :thumbnail, :date, :venue, :website_url
+      :thumbnail, :name, :price, :delivery_days, :description
     )
   end
 end

@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 2021_10_13_170622) do
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "artist_id"
+    t.string "code", null: false, comment: "商品コード"
+    t.string "thumbnail", null: false, comment: "商品画像"
     t.string "name", null: false, comment: "商品名"
     t.integer "price", null: false, comment: "価格"
     t.integer "sales_format_id", null: false, comment: "販売形式"

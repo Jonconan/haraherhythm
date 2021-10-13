@@ -3,6 +3,7 @@ class Artist < ApplicationRecord
   mount_uploader :thumbnail, ImageUploader
   has_many :live_artists
   has_many :life, through: :live_artists
+  has_many :items
   attr_accessor :twitter, :facebook, :instagram, :youtube
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -2,42 +2,38 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li class="before-page"><%= link_to 'ライブ情報', mypage_lives_path %></li>
-    <li>ライブ新規作成</li>
+    <li class="before-page"><%= link_to '商品一覧', mypage_lives_path %></li>
+    <li>新しく商品を登録する</li>
   </ul>
 </div>
-<h2>新規ライブ作成</h2>
+<h2>新しく商品を登録する</h2>
 <div class="new-live">
-  <%= form_with url: mypage_lives_path, method: :post do |f| %>
+  <%= form_with url: mypage_items_path, method: :post do |f| %>
     <table class="new-artists">
       <tr>
-        <th class="require">ライブ名</th>
-        <td><%= f.text_field :title %></td>
+        <th class="require">商品名</th>
+        <td><%= f.text_field :name %></td>
       </tr>
       <tr>
-        <th>ライブの紹介文</th>
-        <td><%= f.text_area :description %></td>
-      </tr>
-      <tr>
-        <th>ライブ画像アップロード</th>
+        <th>商品画像</th>
         <td><%= f.file_field :thumbnail %></td>
       </tr>
       <tr>
-        <th class="require">開催日</th>
-        <td><%= f.date_field :date %></td>
+        <th class="require">価格</th>
+        <td><%= f.number_field :price %></td>
       </tr>
       <tr>
-        <th class="require">ライブ会場情報</th>
-        <td><%= f.text_field :venue %></td>
+        <th class="require">注文から発送までの日数目安</th>
+        <td><%= f.number_field :delivery_days %></td>
       </tr>
       <tr>
-        <th>WebサイトのURL</th>
-        <td><%= f.text_field :website_url %></td>
+        <th>商品紹介</th>
+        <td><%= f.text_area :description %></td>
       </tr>
     </table>
 
     <div class="actions">
-      <%= f.submit "作成" %>
+      <%= f.submit "登録" %>
     </div>
   <% end %>
 </div>

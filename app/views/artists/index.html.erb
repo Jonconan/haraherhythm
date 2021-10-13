@@ -127,12 +127,16 @@
 <% end %>
 
 <h2>物販一覧</h2>
-<div class="product-sales">
-  <ul class="item-list">
-    <%= render partial: 'common/item_cards' %>
-  </ul>
-  <%= link_to 'もっと見る', artist_items_path(artist_id: 1) %>
-</div>
+<% if @artist.items.present? %>
+  <div class="product-sales">
+    <ul class="item-list">
+      <%= render partial: 'common/item_cards', locals: { items: @artist.items } %>
+    </ul>
+    <%= link_to 'もっと見る', artist_items_path(artist_id: @artist.id) %>
+  </div>
+<% else %>
+  まだ商品を登録していません
+<% end %>
 
 <ul class="artist-button">
   <li><a href="#" class="btn-square-slant">フォローする</a></li>

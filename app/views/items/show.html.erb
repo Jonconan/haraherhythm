@@ -2,14 +2,18 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page">ジョーカーさんの商品</li>
-    <li>怪盗団の予告状</li>
+    <li><%= @item.name %></li>
   </ul>
 </div>
 
-<h2>怪盗団の予告状</h2>
+<h2><%= @item.name %></h2>
 <div class="items">
   <div class="item-photo">
-    <%= image_tag 'items/item.jpg' %>
+    <% if @item.thumbnail.present? %>
+      <%= image_tag url_for(@item.thumbnail.url) %>
+    <% else %>
+      <%= image_tag 'live.jpg' %>
+    <% end %>
   </div>
   <div class="description">
     <ul class="tags">
@@ -32,7 +36,7 @@
         期間限定
       </li>
     </ul>
-    <div class="price">¥ 1,500-</div>
+    <div class="price"><%= @item.price %></div>
     <div class="shopping">
       <div class="flow">物販商品（自宅から発送）</div>
       <div class="date">発送までの日数目安：7日以内</div>
@@ -53,17 +57,18 @@
 </div>
 
 <ul class="artist-list">
-  <%= link_to artist_path(artist_id: 1) do %>
+  <%= link_to artist_path(artist_id: @item.artist.id) do %>
   <li class="artist-card">
-    <%= image_tag 'artists/joker.png', class: 'thumbnail' %>
-    <div class="title">ジョーカー</div>
+    <% if @item.artist.thumbnail.present? %>
+      <%= image_tag url_for(@item.artist.thumbnail.url), class: 'thumbnail' %>
+    <% else %>
+      <%= image_tag 'common/default.png', class: 'thumbnail' %>
+    <% end %>
+    <div class="title"><%= @item.artist.nickname %></div>
   </li>
   <% end %>
   <div class="balloon">
-    この商品についての説明文この商品についての説明文<br>
-    この商品についての説明文この商品についての説明文この商品についての説明文！！<br>
-    <br>
-    この商品についての説明文この商品についての説明文この商品についての説明文この商品についての説明文<br>
+    <%= simple_format(@item.description) %>
   </div>
 </ul>
 
