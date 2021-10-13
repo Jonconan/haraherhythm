@@ -2,17 +2,17 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li>ライブ情報</li>
+    <li>イベント情報</li>
   </ul>
 </div>
-<h2>ライブ一覧</h2>
+<h2>イベント一覧</h2>
 <div class="new-live">
   <%= link_to new_mypage_life_path do %>
-    <div class="create-live-button"><i class="fas fa-edit"></i>新規ライブ作成</div>
+    <div class="create-live-button"><i class="fas fa-edit"></i>新規イベント作成</div>
   <% end %>
 </div>
 <% unless @lives.present? %>
-  まだライブが作成されていません。
+  まだイベントが作成されていません。
 <% else %>
   <ul class="item-list">
     <%= render partial: 'common/settings/live_cards', locals: { lives: @lives } %>
