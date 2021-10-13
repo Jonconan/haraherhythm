@@ -17,10 +17,10 @@ test:
 
 staging:
   <<: *default
-  database: <%= ENV['APP_DATABASE_URL'] %>
-  host: <%= ENV['APP_DATABASE_HOST'] %>
-  username: <%= ENV['APP_DATABASE_USER'] %>
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 production:
   <<: *default
