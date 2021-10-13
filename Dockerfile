@@ -6,7 +6,8 @@ RUN apt-get update && apt-get install -y \
     libgmp3-dev  \
     ruby-dev  \
     nodejs \
-    npm
+    npm \
+    vim
 RUN npm install --global yarn
 RUN apt-get install libxml2-dev
 
