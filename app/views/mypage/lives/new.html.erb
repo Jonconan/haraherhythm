@@ -2,24 +2,24 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li class="before-page"><%= link_to 'ライブ情報', mypage_lives_path %></li>
-    <li>ライブ新規作成</li>
+    <li class="before-page"><%= link_to 'イベント情報', mypage_lives_path %></li>
+    <li>イベント新規作成</li>
   </ul>
 </div>
-<h2>新規ライブ作成</h2>
+<h2>新規イベント作成</h2>
 <div class="new-live">
   <%= form_with url: mypage_lives_path, method: :post do |f| %>
     <table class="new-artists">
       <tr>
-        <th class="require">ライブ名</th>
+        <th class="require">イベント名</th>
         <td><%= f.text_field :title %></td>
       </tr>
       <tr>
-        <th>ライブの紹介文</th>
+        <th>イベントの紹介文</th>
         <td><%= f.text_area :description %></td>
       </tr>
       <tr>
-        <th>ライブ画像アップロード</th>
+        <th>イベント画像アップロード</th>
         <td><%= f.file_field :thumbnail %></td>
       </tr>
       <tr>
@@ -27,7 +27,7 @@
         <td><%= f.date_field :date %></td>
       </tr>
       <tr>
-        <th class="require">ライブ会場情報</th>
+        <th class="require">イベント会場情報</th>
         <td><%= f.text_field :venue %></td>
       </tr>
       <tr>

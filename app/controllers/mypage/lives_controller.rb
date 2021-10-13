@@ -41,7 +41,7 @@ class Mypage::LivesController < ApplicationController
 
   def join_live
     live = Live.find_by(id: params[:life_id])
-    # もし現在ライブに参加していなかったら、ログイン中のアーティストを参加させる
+    # もし現在イベントに参加していなかったら、ログイン中のアーティストを参加させる
     unless live.artists.include?(current_artist)
       live.live_artists.create(
         artist_id: current_artist.id
@@ -52,7 +52,7 @@ class Mypage::LivesController < ApplicationController
 
   def left_live
     live = Live.find_by(id: params[:life_id])
-    # もし現在ライブに参加していたら、ログイン中のアーティストを削除する
+    # もし現在イベントに参加していたら、ログイン中のアーティストを削除する
     if live.artists.include?(current_artist)
       live.live_artists.find_by(
         artist_id: current_artist.id

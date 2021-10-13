@@ -2,7 +2,7 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li class="before-page"><%= link_to 'ライブ情報', mypage_lives_path %></li>
+    <li class="before-page"><%= link_to 'イベント情報', mypage_lives_path %></li>
     <li><%= @live.title %>の情報を確認する</li>
   </ul>
 </div>
@@ -14,13 +14,13 @@
       <div class="edit-live">
         <div class="create-live-button">
           <%= link_to edit_mypage_life_path(id: @live.id) do %>
-            <i class="fas fa-edit"></i>ライブを編集する
+            <i class="fas fa-edit"></i>イベントを編集する
           <% end %>
         </div>
       </div>
     </td>
   <tr>
-    <th>ライブ名</th>
+    <th>イベント名</th>
     <td><%= @live.title %></td>
   </tr>
   <tr>
@@ -29,7 +29,7 @@
   </tr>
   <tr>
     <th>
-      ライブ参加者
+      イベント参加者
       <% if @is_join %>
         <div class="live-button left">
           <%= link_to mypage_life_left_live_path(life_id: @live.id) do %>
@@ -59,7 +59,7 @@
     </td>
   </tr>
   <tr>
-    <th>ライブの画像</th>
+    <th>イベントの画像</th>
     <td>
       <% if @live.thumbnail.present? %>
         <%= image_tag url_for(@live.thumbnail.url), class: 'live-thumbnail-img' %>
@@ -69,7 +69,7 @@
     </td>
   </tr>
   <tr>
-    <th>ライブ説明</th>
+    <th>イベント説明</th>
     <td>
       <pre><%= @live.description %></pre>
     </td>
