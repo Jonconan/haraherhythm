@@ -35,6 +35,16 @@
     <td><%= shop_format(@item.price) %></td>
   </tr>
   <tr>
+    <th>商品タグ</th>
+    <td>
+      <ul class="item-list item-detail">
+        <li>写真</li>
+        <li>記念品</li>
+        <li>期間限定</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
     <th>商品の画像</th>
     <td>
       <% if @item.thumbnail.present? %>
@@ -47,11 +57,7 @@
   <tr>
     <th>商品説明</th>
     <td>
-      <ul class="item-list item-detail">
-        <li>写真</li>
-        <li>記念品</li>
-        <li>期間限定</li>
-      </ul>
+      <%= simple_format(@item.description) %>
     </td>
   </tr>
   <tr>

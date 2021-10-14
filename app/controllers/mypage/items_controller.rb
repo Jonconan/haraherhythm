@@ -9,6 +9,8 @@ class Mypage::ItemsController < ApplicationController
 
   def new
     @master_sales_formats = MasterSalesFormat.all
+    @artists = Artist.where.not(id: current_artist.id)
+    @lives = Live.order(date: :desc)
   end
 
   def edit
@@ -43,6 +45,17 @@ class Mypage::ItemsController < ApplicationController
     item.code = SecureRandom.alphanumeric
     if item.valid?
       item.save
+      params[:partner_ids].each do |partner_id|
+        item.item_partners.create(
+          artist_id: partner_id
+        )
+      end
+      params[:event_ids].each do |event_id|
+        item.item_life.create(
+          live_id: event_id
+        )
+      end
+
       redirect_to mypage_items_path and return
     else
       render :new
