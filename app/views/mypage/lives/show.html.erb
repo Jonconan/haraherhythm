@@ -7,12 +7,12 @@
   </ul>
 </div>
 <h2><%= @live.title %>の情報を確認する</h2>
-<table class="mypage-live-settings">
+<table class="mypage-event-settings">
   <tr>
     <th>アクション</th>
     <td>
-      <div class="edit-live">
-        <div class="create-live-button">
+      <div class="edit-event">
+        <div class="create-event-button">
           <%= link_to edit_mypage_life_path(id: @live.id) do %>
             <i class="fas fa-edit"></i>イベントを編集する
           <% end %>
@@ -31,20 +31,20 @@
     <th>
       イベント参加者
       <% if @is_join %>
-        <div class="live-button left">
+        <div class="event-button left">
           <%= link_to mypage_life_left_live_path(life_id: @live.id) do %>
             <i class="fas fa-sign-in-alt"></i>不参加にする
           <% end %>
         </div>
       <% else %>
-        <div class="live-button join">
+        <div class="event-button join">
           <%= link_to mypage_life_join_live_path(life_id: @live.id) do %>
             <i class="fas fa-door-open"></i>参加する
           <% end %>
         </div>
       <% end %>
     </th>
-    <td class="live-join-artists">
+    <td class="event-join-artists">
       <ul class="artist-list">
         <% @live.artists.each do |artist| %>
           <li class="artist-card">

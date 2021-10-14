@@ -5,8 +5,8 @@
   </ul>
 </div>
 <h2><%= @live.title %></h2>
-<div class="live-contents">
-  <div class="live-thumbnail">
+<div class="event-contents">
+  <div class="event-thumbnail">
     <% if @live.thumbnail.present? %>
       <%= image_tag url_for(@live.thumbnail.url), class: 'thumbnail' %>
     <% else %>

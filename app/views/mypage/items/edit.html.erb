@@ -7,7 +7,7 @@
   </ul>
 </div>
 <h2>商品を編集する</h2>
-<div class="new-live">
+<div class="new-event">
   <%= form_with url: mypage_item_path(id: @item.id), method: :patch do |f| %>
     <table class="new-artists">
       <tr>
@@ -62,7 +62,7 @@
       </tr>
       <tr>
         <th>商品関係者</th>
-        <td class="live-join-artists">
+        <td class="event-join-artists">
           <ul class="artist-list">
             <% @artists.each do |artist| %>
               <li class="artist-card">

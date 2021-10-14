@@ -7,7 +7,7 @@
   </ul>
 </div>
 <h2>新しく商品を登録する</h2>
-<div class="new-live">
+<div class="new-event">
   <%= form_with url: mypage_items_path, method: :post do |f| %>
     <table class="new-artists">
       <tr>
@@ -61,7 +61,7 @@
       </tr>
       <tr>
         <th>商品関係者</th>
-        <td class="live-join-artists">
+        <td class="event-join-artists">
           <ul class="artist-list">
             <% @artists.each do |artist| %>
               <li class="artist-card">

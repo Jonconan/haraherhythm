@@ -2,10 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-.live-contents {
+.event-contents {
   position: relative;
 
-  .live-thumbnail {
+  .event-thumbnail {
     text-align: center;
     padding: 1em;
     img {
@@ -75,10 +75,10 @@
   }
 }
 
-.new-live {
+.new-event {
   margin: 1rem;
 
-  .create-live-button {
+  .create-event-button {
     width: 100%;
     max-width: 300px;
     padding: 1.5rem;
@@ -93,7 +93,7 @@
       padding-right: 0.5rem;
     }
   }
-  .create-live-button:hover {
+  .create-event-button:hover {
     transition: all 0.2s;
     background: #6c53ff;
   }
