@@ -38,7 +38,7 @@
     </ul>
     <div class="price"><%= shop_format(@item.price) %></div>
     <div class="shopping">
-      <div class="flow"><%= @item.sales_format %></div>
+      <div class="flow"><%= @item.sales_format.name %></div>
       <% unless @item.sales_format_id == 2 %>
         <div class="date">発送までの日数目安：<%= @item.delivery_days %>日以内</div>
       <% end %>
