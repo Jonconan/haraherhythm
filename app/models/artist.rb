@@ -29,9 +29,6 @@ class Artist < ApplicationRecord
   end
 
   def join_lives
-    live_ids = live_artists.map do |live|
-      live.live_id
-    end
-    Live.where(id: live_ids).default_order
+    Live.where(id: live_artists.map(&:live_id)).default_order
   end
 end
