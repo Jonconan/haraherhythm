@@ -12,7 +12,7 @@
     <th>
       アクション
       <div class="event-button left">
-        <%= link_to item_path(life_id: @item.id), target: '_blank' do %>
+        <%= link_to item_path(id: @item.id), target: '_blank' do %>
           <i class="fas fa-shopping-bag"></i>ページを確認する
         <% end %>
       </div>
@@ -48,9 +48,9 @@
     <th>商品の画像</th>
     <td>
       <% if @item.thumbnail.present? %>
-        <%= image_tag url_for(@item.thumbnail.url), class: 'live-thumbnail-img' %>
+        <%= image_tag url_for(@item.thumbnail.url), class: 'event-thumbnail-img' %>
       <% else %>
-        <%= image_tag 'live.jpg', class: 'live-thumbnail-img' %>
+        <%= image_tag 'live.jpg', class: 'event-thumbnail-img' %>
       <% end %>
     </td>
   </tr>
@@ -90,8 +90,8 @@
     <th>関係しているイベント</th>
     <td>
       <ul class="item-list item-detail">
-        <% @item.events.each do |live| %>
-          <li><%= live.title %>（<%= live.date.strftime('%Y.%m.%d') %>）</li>
+        <% @item.events.each do |event| %>
+          <li><%= event.title %>（<%= event.date.strftime('%Y.%m.%d') %>）</li>
         <% end %>
       </ul>
     </td>

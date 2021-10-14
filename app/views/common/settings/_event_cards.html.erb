@@ -1,5 +1,5 @@
 <% events.each do |event| %>
-  <%= link_to mypage_life_path(id: event.id) do %>
+  <%= link_to mypage_event_path(id: event.id) do %>
     <li class="item-card">
       <div class="date"><%= event.date.strftime('%Y.%m.%d') %></div>
       <% if event.thumbnail.present? %>

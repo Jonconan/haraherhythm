@@ -2,7 +2,7 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li class="before-page"><%= link_to '商品一覧', mypage_lives_path %></li>
+    <li class="before-page"><%= link_to '商品一覧', mypage_events_path %></li>
     <li>商品編集</li>
   </ul>
 </div>
@@ -83,12 +83,12 @@
         <th>関係イベント</th>
         <td>
           <ul class="sales_format">
-            <% @all_events.each do |live| %>
+            <% @all_events.each do |event| %>
             <li>
               <%= f.check_box :event_ids, {
-                multiple: true, checked: @events.include?(live.id), include_hidden: false, class: :radio_button
-              }, live.id %>
-              <%= live.title %>（<%= live.date.strftime('%Y.%m.%d') %>）
+                multiple: true, checked: @events.include?(event.id), include_hidden: false, class: :radio_button
+              }, event.id %>
+              <%= event.title %>（<%= event.date.strftime('%Y.%m.%d') %>）
             </li>
             <% end %>
           </ul>

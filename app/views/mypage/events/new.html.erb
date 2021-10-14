@@ -2,13 +2,13 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li class="before-page"><%= link_to 'イベント情報', mypage_lives_path %></li>
+    <li class="before-page"><%= link_to 'イベント情報', mypage_events_path %></li>
     <li>イベント新規作成</li>
   </ul>
 </div>
 <h2>新規イベント作成</h2>
 <div class="new-event">
-  <%= form_with url: mypage_lives_path, method: :post do |f| %>
+  <%= form_with url: mypage_events_path, method: :post do |f| %>
     <table class="new-artists">
       <tr>
         <th class="require">イベント名</th>

@@ -82,12 +82,12 @@
         <th>関係イベント</th>
         <td>
           <ul class="sales_format">
-            <% @events.each do |live| %>
+            <% @events.each do |event| %>
             <li>
               <%= f.check_box :event_ids, {
                 multiple: true, checked: false, include_hidden: false, class: :radio_button
-              }, live.id %>
-              <%= live.title %>（<%= live.date.strftime('%Y.%m.%d') %>）
+              }, event.id %>
+              <%= event.title %>（<%= event.date.strftime('%Y.%m.%d') %>）
             </li>
             <% end %>
           </ul>
