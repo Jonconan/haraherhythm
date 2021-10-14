@@ -67,7 +67,7 @@
             <% @artists.each do |artist| %>
               <li class="artist-card">
                 <%= f.check_box :partner_ids, {
-                  multiple: true, checked: @partner_ids.include?(artist.id), include_hidden: false
+                  multiple: true, checked: @item.artists.ids.include?(artist.id), include_hidden: false
                 }, artist.id %>
                 <% if artist.thumbnail.present? %>
                   <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>

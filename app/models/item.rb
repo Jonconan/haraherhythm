@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   has_many :item_partners
   has_many :artists, through: :item_partners
 
-  attr_accessor :tags_name, :tag_ids, :sales_format_id, :event_ids
+  attr_accessor :tags_name, :tag_ids, :event_ids
 
   def events
     Live.where(id: item_life.map(&:live_id))

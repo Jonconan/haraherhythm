@@ -11,11 +11,11 @@ class Mypage::ItemsController < ApplicationController
     @master_sales_formats = MasterSalesFormat.all
     @artists = Artist.where.not(id: current_artist.id)
     @lives = Live.order(date: :desc)
+    @tags = Tag.all
   end
 
   def edit
     @item = current_artist.items.find_by(id: params[:id])
-    @partner_ids = @item.item_partners.map(&:artist_id)
     @artists = Artist.where.not(id: @item.artist.id)
     @master_sales_formats = MasterSalesFormat.all
     @lives = Live.order(date: :desc)
@@ -73,6 +73,20 @@ class Mypage::ItemsController < ApplicationController
         )
       end
 
+      params[:tag_ids].each do |tag_id|
+        item.item_tags.create(
+          tag_id: tag_id
+        )
+      end
+      if params[:tags_name].present?
+        params[:tags_name].split().each do |tag_name|
+          tag = Tag.find_by(name: tag_name)
+          tag = Tag.create(name: tag_name) unless tag.present?
+          item.item_tags.create(
+            tag_id: tag.id
+          )
+        end
+      end
       redirect_to mypage_items_path and return
     else
       render :new
