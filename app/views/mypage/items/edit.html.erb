@@ -23,6 +23,22 @@
         <td><%= f.number_field :price, value: @item.price %></td>
       </tr>
       <tr>
+        <th>商品タグ</th>
+        <td>
+          <%= f.text_field :tags_name, placeholder: '新規タグ作成　スペース区切りで複数追加' %>
+          <ul class="sales_format">
+            <% @tags.each do |tag| %>
+            <li>
+              <%= f.check_box :tag_ids, {
+                multiple: true, checked: @item.tags.ids.include?(tag.id), include_hidden: false, class: :radio_button
+              }, tag.id %>
+              <%= tag.name %>
+            </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
         <th class="require">発送方法</th>
         <td>
           <ul class="sales_format">

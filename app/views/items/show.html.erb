@@ -17,24 +17,14 @@
   </div>
   <div class="description">
     <ul class="tags">
-      <li>
-        <div class="tag-icon">
-          <%= image_tag 'common/tag.png' %>
-        </div>
-        写真
-      </li>
-      <li>
-        <div class="tag-icon">
-          <%= image_tag 'common/tag.png' %>
-        </div>
-        記念品
-      </li>
-      <li>
-        <div class="tag-icon">
-          <%= image_tag 'common/tag.png' %>
-        </div>
-        期間限定
-      </li>
+      <% @item.tags.each do |tag| %>
+        <li>
+          <div class="tag-icon">
+            <%= image_tag 'common/tag.png' %>
+          </div>
+          <%= tag.name %>
+        </li>
+      <% end %>
     </ul>
     <div class="price"><%= shop_format(@item.price) %></div>
     <div class="shopping">
@@ -52,7 +42,7 @@
       <span class="star5_rating" data-rate="4.5"></span>
     </div>
     <ul class="artist-list">
-      <% @item.partners.each do |partner| %>
+      <% @item.artists.each do |partner| %>
         <li class="artist-card">
           <% if partner.thumbnail.present? %>
             <%= image_tag url_for(partner.thumbnail.url), class: 'thumbnail' %>

@@ -31,16 +31,16 @@
     <td><%= @item.name %></td>
   </tr>
   <tr>
-    <th>値段</th>
+    <th>価格</th>
     <td><%= shop_format(@item.price) %></td>
   </tr>
   <tr>
     <th>商品タグ</th>
     <td>
       <ul class="item-list item-detail">
-        <li>写真</li>
-        <li>記念品</li>
-        <li>期間限定</li>
+        <% @item.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <% end %>
       </ul>
     </td>
   </tr>
@@ -64,10 +64,10 @@
     <th>商品関係者</th>
     <td class="live-join-artists">
       <ul class="artist-list">
-        <% @item.partners.each do |partner| %>
+        <% @item.artists.each do |artist| %>
           <li class="artist-card">
-            <% if partner.thumbnail.present? %>
-              <%= image_tag url_for(partner.thumbnail.url), class: 'thumbnail' %>
+            <% if artist.thumbnail.present? %>
+              <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
             <% else %>
               <%= image_tag 'common/default.png', class: 'thumbnail' %>
             <% end %>
