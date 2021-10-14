@@ -1,6 +1,6 @@
-class CreateLives < ActiveRecord::Migration[6.0]
+class CreateEvents < ActiveRecord::Migration[6.0]
   def change
-    create_table :lives do |t|
+    create_table :events do |t|
       t.string :code, null: false, comment: "ライブコード"
 
       t.string :title, null: false, comment: "ライブ名"

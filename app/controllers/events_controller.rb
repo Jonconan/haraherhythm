@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
   def index
-    @event = Live.find_by(id: params[:event_id])
+    @event = Event.find_by(id: params[:event_id])
   end
 end

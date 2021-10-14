@@ -1,3 +1,0 @@
-class ItemLife < ApplicationRecord
-
-end
