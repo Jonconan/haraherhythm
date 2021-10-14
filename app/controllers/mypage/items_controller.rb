@@ -27,20 +27,20 @@ class Mypage::ItemsController < ApplicationController
     item = current_artist.items.find_by(id: params[:id])
     item.update(item_params)
     item.item_partners.delete_all if item.item_partners.present?
-    params[:partner_ids].each do |partner_id|
+    params[:partner_ids]&.each do |partner_id|
       item.item_partners.create(
         artist_id: partner_id
       )
     end
     item.item_life.delete_all if item.item_life.present?
-    params[:event_ids].each do |event_id|
+    params[:event_ids]&.each do |event_id|
       item.item_life.create(
         live_id: event_id
       )
     end
 
     item.item_tags.delete_all if item.item_tags.present?
-    params[:tag_ids].each do |tag_id|
+    params[:tag_ids]&.each do |tag_id|
       item.item_tags.create(
         tag_id: tag_id
       )
@@ -62,18 +62,18 @@ class Mypage::ItemsController < ApplicationController
     item.code = SecureRandom.alphanumeric
     if item.valid?
       item.save
-      params[:partner_ids].each do |partner_id|
+      params[:partner_ids]&.each do |partner_id|
         item.item_partners.create(
           artist_id: partner_id
         )
       end
-      params[:event_ids].each do |event_id|
+      params[:event_ids]&.each do |event_id|
         item.item_life.create(
           live_id: event_id
         )
       end
 
-      params[:tag_ids].each do |tag_id|
+      params[:tag_ids]&.each do |tag_id|
         item.item_tags.create(
           tag_id: tag_id
         )
