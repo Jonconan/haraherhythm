@@ -8,15 +8,15 @@
 </div>
 <h2>イベント編集</h2>
 <div class="new-event">
-  <%= form_with url: mypage_life_path(id: @live.id), method: :patch do |f| %>
+  <%= form_with url: mypage_life_path(id: @event.id), method: :patch do |f| %>
     <table class="new-artists">
       <tr>
         <th class="require">イベント名</th>
-        <td><%= f.text_field :title, value: @live.title %></td>
+        <td><%= f.text_field :title, value: @event.title %></td>
       </tr>
       <tr>
         <th>イベントの紹介文</th>
-        <td><%= f.text_area :description, value: @live.description %></td>
+        <td><%= f.text_area :description, value: @event.description %></td>
       </tr>
       <tr>
         <th>画像アップロード</th>
@@ -24,15 +24,15 @@
       </tr>
       <tr>
         <th class="require">開催日</th>
-        <td><%= f.date_field :date, value: @live.date %></td>
+        <td><%= f.date_field :date, value: @event.date %></td>
       </tr>
       <tr>
         <th class="require">イベント会場情報</th>
-        <td><%= f.text_field :venue, value: @live.venue %></td>
+        <td><%= f.text_field :venue, value: @event.venue %></td>
       </tr>
       <tr>
         <th>WebサイトのURL</th>
-        <td><%= f.text_field :website_url, value: @live.website_url %></td>
+        <td><%= f.text_field :website_url, value: @event.website_url %></td>
       </tr>
     </table>
 

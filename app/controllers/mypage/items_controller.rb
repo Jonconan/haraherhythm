@@ -10,7 +10,7 @@ class Mypage::ItemsController < ApplicationController
   def new
     @master_sales_formats = MasterSalesFormat.all
     @artists = Artist.where.not(id: current_artist.id)
-    @lives = Live.order(date: :desc)
+    @events = Live.order(date: :desc)
     @tags = Tag.all
   end
 
@@ -18,7 +18,7 @@ class Mypage::ItemsController < ApplicationController
     @item = current_artist.items.find_by(id: params[:id])
     @artists = Artist.where.not(id: @item.artist.id)
     @master_sales_formats = MasterSalesFormat.all
-    @lives = Live.order(date: :desc)
+    @all_events = Live.order(date: :desc)
     @events = @item.item_life.map(&:live_id)
     @tags = Tag.all
   end

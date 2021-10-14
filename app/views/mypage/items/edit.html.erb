@@ -83,7 +83,7 @@
         <th>関係イベント</th>
         <td>
           <ul class="sales_format">
-            <% @lives.each do |live| %>
+            <% @all_events.each do |live| %>
             <li>
               <%= f.check_box :event_ids, {
                 multiple: true, checked: @events.include?(live.id), include_hidden: false, class: :radio_button

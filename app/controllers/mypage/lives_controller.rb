@@ -4,14 +4,14 @@ class Mypage::LivesController < ApplicationController
   before_action :artist_check_sessions
 
   def index
-    @lives = Live.default_order
+    @events = Live.default_order
   end
 
   def new
   end
 
   def edit
-    @live = Live.find_by(id: params[:id])
+    @event = Live.find_by(id: params[:id])
   end
 
   def update
@@ -35,8 +35,8 @@ class Mypage::LivesController < ApplicationController
   end
 
   def show
-    @live = Live.find_by(id: params[:id])
-    @is_join = @live.artists.include?(current_artist)
+    @event = Live.find_by(id: params[:id])
+    @is_join = @event.artists.include?(current_artist)
   end
 
   def join_live
