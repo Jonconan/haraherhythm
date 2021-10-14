@@ -1,5 +1,5 @@
 <% items.each do |item| %>
-  <%= link_to item_path(id: item.id) do %>
+  <%= link_to mypage_item_path(id: item.id) do %>
     <li class="item-card">
       <div class="title"><%= item.name %></div>
       <div class="description">

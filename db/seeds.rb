@@ -175,12 +175,12 @@ MasterSnsService.create(
 ) unless MasterSnsService.find_by(name: "instagram").present?
 
 MasterSalesFormat.create(
-  name: "物販販売（自宅から発送）"
-) unless MasterSnsService.find_by(name: "物販販売（自宅から発送）").present?
+  name: "物品販売（自宅から発送）"
+) unless MasterSnsService.find_by(name: "物品販売（自宅から発送）").present?
 
 MasterSalesFormat.create(
-  name: "物販販売（ダウンロード商品）"
-) unless MasterSnsService.find_by(name: "物販販売（ダウンロード商品）").present?
+  name: "物品販売（ダウンロード商品）"
+) unless MasterSnsService.find_by(name: "物品販売（ダウンロード商品）").present?
 
 MasterSalesFormat.create(
   name: "受注生産"

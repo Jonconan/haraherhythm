@@ -8,22 +8,23 @@ class Mypage::ItemsController < ApplicationController
   end
 
   def new
+    @master_sales_formats = MasterSalesFormat.all
   end
 
   def edit
-    @item = Item.find_by(id: params[:id])
+    @item = current_artist.items.find_by(id: params[:id])
+    @master_sales_formats = MasterSalesFormat.all
   end
 
   def update
-    live = Item.find_by(id: params[:id])
-    live.update(live_params)
-    redirect_to mypage_life_path(id: live.id) and return
+    item = current_artist.items.find_by(id: params[:id])
+    item.update(item_params)
+    redirect_to mypage_item_path(id: item.id) and return
   end
 
   def create
     item = current_artist.items.new(item_params)
     item.code = SecureRandom.alphanumeric
-    item.sales_format_id = 0
     if item.valid?
       item.save
       redirect_to mypage_items_path and return
@@ -33,37 +34,14 @@ class Mypage::ItemsController < ApplicationController
   end
 
   def show
-    @live = Live.find_by(id: params[:id])
-    @is_join = @live.artists.include?(current_artist)
-  end
-
-  def join_live
-    live = Live.find_by(id: params[:life_id])
-    # もし現在イベントに参加していなかったら、ログイン中のアーティストを参加させる
-    unless live.artists.include?(current_artist)
-      live.live_artists.create(
-        artist_id: current_artist.id
-      )
-    end
-    redirect_to mypage_life_path(id: live.id) and return
-  end
-
-  def left_live
-    live = Live.find_by(id: params[:life_id])
-    # もし現在イベントに参加していたら、ログイン中のアーティストを削除する
-    if live.artists.include?(current_artist)
-      live.live_artists.find_by(
-        artist_id: current_artist.id
-      ).destroy
-    end
-    redirect_to mypage_life_path(id: live.id) and return
+    @item = current_artist.items.find_by(id: params[:id])
   end
 
   private
 
   def item_params
     params.permit(
-      :thumbnail, :name, :price, :delivery_days, :description
+      :thumbnail, :name, :price, :delivery_days, :description, :sales_format_id
     )
   end
 end

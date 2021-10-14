@@ -2,7 +2,7 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li class="before-page"><%= link_to '商品一覧', mypage_lives_path %></li>
+    <li class="before-page"><%= link_to '商品一覧', mypage_items_path %></li>
     <li>新しく商品を登録する</li>
   </ul>
 </div>
@@ -23,7 +23,21 @@
         <td><%= f.number_field :price %></td>
       </tr>
       <tr>
-        <th class="require">注文から発送までの日数目安</th>
+        <th class="require">発送方法</th>
+        <td>
+          <ul class="sales_format">
+          <% @master_sales_formats.each do |format| %>
+            <li>
+              <%= f.radio_button :sales_format_id, format.id,
+              checked: false, class: :radio_button %>
+              <%= format.name %>
+            </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th class="require">発送までの日数</th>
         <td><%= f.number_field :delivery_days %></td>
       </tr>
       <tr>
