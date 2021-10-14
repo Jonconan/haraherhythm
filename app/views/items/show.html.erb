@@ -2,40 +2,36 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page">ジョーカーさんの商品</li>
-    <li>怪盗団の予告状</li>
+    <li><%= @item.name %></li>
   </ul>
 </div>
 
-<h2>怪盗団の予告状</h2>
+<h2><%= @item.name %></h2>
 <div class="items">
   <div class="item-photo">
-    <%= image_tag 'items/item.jpg' %>
+    <% if @item.thumbnail.present? %>
+      <%= image_tag url_for(@item.thumbnail.url) %>
+    <% else %>
+      <%= image_tag 'live.jpg' %>
+    <% end %>
   </div>
   <div class="description">
     <ul class="tags">
-      <li>
-        <div class="tag-icon">
-          <%= image_tag 'common/tag.png' %>
-        </div>
-        写真
-      </li>
-      <li>
-        <div class="tag-icon">
-          <%= image_tag 'common/tag.png' %>
-        </div>
-        記念品
-      </li>
-      <li>
-        <div class="tag-icon">
-          <%= image_tag 'common/tag.png' %>
-        </div>
-        期間限定
-      </li>
+      <% @item.tags.each do |tag| %>
+        <li>
+          <div class="tag-icon">
+            <%= image_tag 'common/tag.png' %>
+          </div>
+          <%= tag.name %>
+        </li>
+      <% end %>
     </ul>
-    <div class="price">¥ 1,500-</div>
+    <div class="price"><%= shop_format(@item.price) %></div>
     <div class="shopping">
-      <div class="flow">物販商品（自宅から発送）</div>
-      <div class="date">発送までの日数目安：7日以内</div>
+      <div class="flow"><%= @item.sales_format.name %></div>
+      <% unless @item.sales_format_id == 2 %>
+        <div class="date">発送までの日数目安：<%= @item.delivery_days %>日以内</div>
+      <% end %>
     </div>
     <div class="add-cart">
       <div class="cart-icon"><%= image_tag 'common/cart.png' %></div>
@@ -46,68 +42,46 @@
       <span class="star5_rating" data-rate="4.5"></span>
     </div>
     <ul class="artist-list">
-      <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
-      <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
+      <% @item.artists.each do |partner| %>
+        <li class="artist-card">
+          <% if partner.thumbnail.present? %>
+            <%= image_tag url_for(partner.thumbnail.url), class: 'thumbnail' %>
+          <% else %>
+            <%= image_tag 'common/default.png', class: 'thumbnail' %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
 
 <ul class="artist-list">
-  <%= link_to artist_path(artist_id: 1) do %>
+  <%= link_to artist_path(artist_id: @item.artist.id) do %>
   <li class="artist-card">
-    <%= image_tag 'artists/joker.png', class: 'thumbnail' %>
-    <div class="title">ジョーカー</div>
+    <% if @item.artist.thumbnail.present? %>
+      <%= image_tag url_for(@item.artist.thumbnail.url), class: 'thumbnail' %>
+    <% else %>
+      <%= image_tag 'common/default.png', class: 'thumbnail' %>
+    <% end %>
+    <div class="title"><%= @item.artist.nickname %></div>
   </li>
   <% end %>
   <div class="balloon">
-    この商品についての説明文この商品についての説明文<br>
-    この商品についての説明文この商品についての説明文この商品についての説明文！！<br>
-    <br>
-    この商品についての説明文この商品についての説明文この商品についての説明文この商品についての説明文<br>
+    <%= simple_format(@item.description) %>
   </div>
 </ul>
+
+<h2>この商品が出品されたイベント一覧</h2>
+<div class="product-sales">
+  <ul class="item-list">
+    <%= render partial: 'common/live_cards', locals: { lives: @item.events } %>
+  </ul>
+</div>
 
 <h2>この商品を見た人はこちらも見ています</h2>
 <div class="product-sales">
   <ul class="item-list">
-    <%= link_to item_path(id: 1) do %>
-      <li class="item-card">
-        <div class="title">怪盗団の予告状</div>
-        <div class="description">
-          <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-          <ul class="artist-list">
-            <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
-          </ul>
-        </div>
-        <div class="live">2021.09.10 〇〇〇イベント</div>
-        <div class="price">¥ 1,500-</div>
-      </li>
-    <% end %>
-    <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
-      <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-        <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/sukaru.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
-        </ul>
-      </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
-    </li>
-    <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
-      <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-        <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
-        </ul>
-      </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
-    </li>
+    <%#= render partial: 'common/item_cards', locals: { items: @items } %>
+    準備中
   </ul>
 </div>

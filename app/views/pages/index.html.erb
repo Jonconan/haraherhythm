@@ -24,7 +24,7 @@
 
 <div class="product-sales">
   <ul class="item-list">
-    <%= render partial: 'common/item_cards' %>
+    <%= render partial: 'common/item_cards', locals: { items: @items } %>
   </ul>
   もっと見る
 </div>

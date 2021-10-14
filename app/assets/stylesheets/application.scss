@@ -200,7 +200,7 @@ contents {
     }
 
     .item-card {
-      max-width: 20em;
+      max-width: 20rem;
       text-align: center;
       border: 2px solid #90b6d6;
       border-radius: 20px;
@@ -213,13 +213,13 @@ contents {
 
       .thumbnail {
         width: 100%;
-        max-width: 306px;
-        max-height: 160px;
+        max-width: 257px;
+        max-height: 130px;
       }
       .artist-card {
         .thumbnail {
-          max-width: 50px;
-          max-height: 50px;
+          max-width: 40px;
+          max-height: 40px;
         }
       }
     }

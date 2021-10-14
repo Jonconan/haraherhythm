@@ -1,0 +1,102 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
+    <li class="before-page"><%= link_to '商品一覧', mypage_items_path %></li>
+    <li>新しく商品を登録する</li>
+  </ul>
+</div>
+<h2>新しく商品を登録する</h2>
+<div class="new-live">
+  <%= form_with url: mypage_items_path, method: :post do |f| %>
+    <table class="new-artists">
+      <tr>
+        <th class="require">商品名</th>
+        <td><%= f.text_field :name %></td>
+      </tr>
+      <tr>
+        <th>商品画像</th>
+        <td><%= f.file_field :thumbnail %></td>
+      </tr>
+      <tr>
+        <th class="require">価格</th>
+        <td><%= f.number_field :price %></td>
+      </tr>
+      <tr>
+        <th>商品タグ</th>
+        <td>
+          <%= f.text_field :tags_name, placeholder: '新規タグ作成　スペース区切りで複数追加' %>
+          <ul class="sales_format">
+            <% @tags.each do |tag| %>
+            <li>
+              <%= f.check_box :tag_ids, {
+                multiple: true, checked: false, include_hidden: false, class: :radio_button
+              }, tag.id %>
+              <%= tag.name %>
+            </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>      <tr>
+        <th class="require">発送方法</th>
+        <td>
+          <ul class="sales_format">
+          <% @master_sales_formats.each do |format| %>
+            <li>
+              <%= f.radio_button :sales_format_id, format.id,
+              checked: false, class: :radio_button %>
+              <%= format.name %>
+            </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th class="require">発送までの日数</th>
+        <td><%= f.number_field :delivery_days %></td>
+      </tr>
+      <tr>
+        <th>商品紹介</th>
+        <td><%= f.text_area :description %></td>
+      </tr>
+      <tr>
+        <th>商品関係者</th>
+        <td class="live-join-artists">
+          <ul class="artist-list">
+            <% @artists.each do |artist| %>
+              <li class="artist-card">
+                <%= f.check_box :partner_ids, {
+                  multiple: true, checked: false, include_hidden: false
+                }, artist.id %>
+                <% if artist.thumbnail.present? %>
+                  <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
+                <% else %>
+                  <%= image_tag 'common/default.png', class: 'thumbnail' %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>関係イベント</th>
+        <td>
+          <ul class="sales_format">
+            <% @lives.each do |live| %>
+            <li>
+              <%= f.check_box :event_ids, {
+                multiple: true, checked: false, include_hidden: false, class: :radio_button
+              }, live.id %>
+              <%= live.title %>（<%= live.date.strftime('%Y.%m.%d') %>）
+            </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    </table>
+
+    <div class="actions">
+      <%= f.submit "登録" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
+    <li>商品情報</li>
+  </ul>
+</div>
+<h2>商品一覧</h2>
+<div class="new-live">
+  <%= link_to new_mypage_item_path do %>
+    <div class="create-live-button"><i class="fas fa-edit"></i>商品を登録する</div>
+  <% end %>
+</div>
+<% unless @items.present? %>
+  まだ商品が登録されていません。
+<% else %>
+<div class="product-sales">
+  <ul class="item-list">
+    <%= render partial: 'common/settings/item_cards', locals: { items: @items } %>
+  </ul>
+</div>
+<% end %>

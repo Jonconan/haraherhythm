@@ -30,5 +30,8 @@ Rails.application.routes.draw do
       get :join_live
       get :left_live
     end
+
+    resources :items, only: [:index, :new, :create, :show, :edit, :update] do
+    end
   end
 end

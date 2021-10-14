@@ -1,73 +1,36 @@
+<% items.each do |item| %>
+  <%= link_to item_path(id: item.id) do %>
     <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
+      <div class="title"><%= item.name %></div>
       <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
+        <% if item.thumbnail.present? %>
+          <%= image_tag url_for(item.thumbnail.url), class: 'thumbnail' %>
+        <% else %>
+          <%= image_tag 'live.jpg', class: 'thumbnail' %>
+        <% end %>
         <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
+          <li class="artist-card">
+            <!-- 作者のアイコン -->
+            <% if item.artist.thumbnail.present? %>
+              <%= image_tag url_for(item.artist.thumbnail.url), class: 'thumbnail' %>
+            <% else %>
+              <%= image_tag 'common/default.png', class: 'thumbnail' %>
+            <% end %>
+          </li>
+          <% item.artists.each do |partner| %>
+            <li class="artist-card">
+              <!-- 関係者のアイコン -->
+              <% if partner.thumbnail.present? %>
+                <%= image_tag url_for(partner.thumbnail.url), class: 'thumbnail' %>
+              <% else %>
+                <%= image_tag 'common/default.png', class: 'thumbnail' %>
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
+      <div class="live"><%= item.events&.first&.title %></div>
+      <div class="price"><%= shop_format(item.price) %></div>
     </li>
-    <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
-      <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-        <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/joker.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/sukaru.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
-        </ul>
-      </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
-    </li>
-    <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
-      <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-        <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
-        </ul>
-      </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
-    </li>
-    <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
-      <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-        <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/fox.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
-        </ul>
-      </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
-    </li>
-    <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
-      <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-        <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/sukaru.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
-        </ul>
-      </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
-    </li>
-    <li class="item-card">
-      <div class="title">怪盗団の予告状</div>
-      <div class="description">
-        <%= image_tag 'items/item.jpg', class: 'thumbnail' %>
-        <ul class="artist-list">
-          <li class="artist-card"><%= image_tag 'artists/sukaru.png', class: 'thumbnail' %></li>
-          <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
-        </ul>
-      </div>
-      <div class="live">2021.09.10 〇〇〇イベント</div>
-      <div class="price">¥ 1,500-</div>
-    </li>
+  <% end %>
+<% end %>

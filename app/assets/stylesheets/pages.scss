@@ -34,6 +34,30 @@
       font-size: 1em;
     }
 
+    .sales_format {
+      padding-inline-start: 0;
+    }
+    .artist-list {
+      padding-inline-start: 0;
+
+      .artist-card {
+        width: 4.5em;
+        margin: 0;
+        background: none;
+
+        .thumbnail {
+          width: 60px;
+          height: 60px;
+          background: #FFF;
+        }
+      }
+
+    }
+
+    .radio_button {
+      width: 1rem;
+    }
+
     textarea {
       margin: 1em;
       padding: 1em;

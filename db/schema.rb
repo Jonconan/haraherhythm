@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_11_125236) do
+ActiveRecord::Schema.define(version: 2021_10_14_083718) do
 
   create_table "artist_sns_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "artist_id"
@@ -44,6 +44,47 @@ ActiveRecord::Schema.define(version: 2021_10_11_125236) do
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
   end
 
+  create_table "item_lives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "live_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_lives_on_item_id"
+    t.index ["live_id"], name: "index_item_lives_on_live_id"
+  end
+
+  create_table "item_partners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "artist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_item_partners_on_artist_id"
+    t.index ["item_id"], name: "index_item_partners_on_item_id"
+  end
+
+  create_table "item_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_tags_on_item_id"
+    t.index ["tag_id"], name: "index_item_tags_on_tag_id"
+  end
+
+  create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "artist_id"
+    t.string "code", null: false, comment: "商品コード"
+    t.string "thumbnail", null: false, comment: "商品画像"
+    t.string "name", null: false, comment: "商品名"
+    t.integer "price", null: false, comment: "価格"
+    t.integer "sales_format_id", null: false, comment: "販売形式"
+    t.integer "delivery_days", comment: "発送までの日数"
+    t.text "description", comment: "商品紹介"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_items_on_artist_id"
+  end
+
   create_table "live_artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "live_id"
     t.bigint "artist_id"
@@ -66,12 +107,32 @@ ActiveRecord::Schema.define(version: 2021_10_11_125236) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "master_sales_formats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false, comment: "販売形式"
+    t.boolean "delete_flg", default: false, null: false, comment: "削除フラグ"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "master_sns_services", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false, comment: "SNS名"
     t.boolean "delete_flg", default: false, null: false
   end
 
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false, comment: "タグの内容"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "artist_sns_accounts", "artists"
+  add_foreign_key "item_lives", "items"
+  add_foreign_key "item_lives", "lives", column: "live_id"
+  add_foreign_key "item_partners", "artists"
+  add_foreign_key "item_partners", "items"
+  add_foreign_key "item_tags", "items"
+  add_foreign_key "item_tags", "tags"
+  add_foreign_key "items", "artists"
   add_foreign_key "live_artists", "artists"
   add_foreign_key "live_artists", "lives", column: "live_id"
 end
