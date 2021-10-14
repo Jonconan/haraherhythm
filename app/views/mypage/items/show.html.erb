@@ -47,7 +47,11 @@
   <tr>
     <th>商品説明</th>
     <td>
-     写真　記念品　期間限定
+      <ul class="item-list item-detail">
+        <li>写真</li>
+        <li>記念品</li>
+        <li>期間限定</li>
+      </ul>
     </td>
   </tr>
   <tr>
@@ -76,4 +80,14 @@
       <td><%= @item.delivery_days %>日</td>
     </tr>
   <% end %>
+  <tr>
+    <th>関係しているイベント</th>
+    <td>
+      <ul class="item-list item-detail">
+        <% @item.events.each do |live| %>
+          <li><%= live.title %>（<%= live.date.strftime('%Y.%m.%d') %>）</li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
 </table>

@@ -81,6 +81,13 @@
   </div>
 </ul>
 
+<h2>この商品が出品されたイベント一覧</h2>
+<div class="product-sales">
+  <ul class="item-list">
+    <%= render partial: 'common/live_cards', locals: { lives: @item.events } %>
+  </ul>
+</div>
+
 <h2>この商品を見た人はこちらも見ています</h2>
 <div class="product-sales">
   <ul class="item-list">

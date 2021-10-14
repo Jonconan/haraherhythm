@@ -63,8 +63,22 @@
           </ul>
         </td>
       </tr>
+      <tr>
+        <th>関係イベント</th>
+        <td>
+          <ul class="sales_format">
+            <% @lives.each do |live| %>
+            <li>
+              <%= f.check_box :event_ids, {
+                multiple: true, checked: @events.include?(live.id), include_hidden: false, class: :radio_button
+              }, live.id %>
+              <%= live.title %>（<%= live.date.strftime('%Y.%m.%d') %>）
+            </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
     </table>
-
     <div class="actions">
       <%= f.submit "更新" %>
     </div>

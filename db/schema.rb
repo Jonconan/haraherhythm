@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_13_170622) do
+ActiveRecord::Schema.define(version: 2021_10_14_083718) do
 
   create_table "artist_sns_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "artist_id"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2021_10_13_170622) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_artists_on_email", unique: true
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
+  end
+
+  create_table "item_lives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "live_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_lives_on_item_id"
+    t.index ["live_id"], name: "index_item_lives_on_live_id"
   end
 
   create_table "item_partners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -117,6 +126,8 @@ ActiveRecord::Schema.define(version: 2021_10_13_170622) do
   end
 
   add_foreign_key "artist_sns_accounts", "artists"
+  add_foreign_key "item_lives", "items"
+  add_foreign_key "item_lives", "lives", column: "live_id"
   add_foreign_key "item_partners", "artists"
   add_foreign_key "item_partners", "items"
   add_foreign_key "item_tags", "items"
