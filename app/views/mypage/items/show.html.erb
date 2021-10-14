@@ -54,13 +54,15 @@
     <th>商品関係者</th>
     <td class="live-join-artists">
       <ul class="artist-list">
-        <li class="artist-card">
-          <% if @item.artist.thumbnail.present? %>
-            <%= image_tag url_for(@item.artist.thumbnail.url), class: 'thumbnail' %>
-          <% else %>
-            <%= image_tag 'common/default.png', class: 'thumbnail' %>
-          <% end %>
-        </li>
+        <% @item.partners.each do |partner| %>
+          <li class="artist-card">
+            <% if partner.thumbnail.present? %>
+              <%= image_tag url_for(partner.thumbnail.url), class: 'thumbnail' %>
+            <% else %>
+              <%= image_tag 'common/default.png', class: 'thumbnail' %>
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </td>
   </tr>

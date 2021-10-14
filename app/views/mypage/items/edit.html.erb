@@ -44,6 +44,25 @@
         <th>商品紹介</th>
         <td><%= f.text_area :description, value: @item.description %></td>
       </tr>
+      <tr>
+        <th>商品関係者</th>
+        <td class="live-join-artists">
+          <ul class="artist-list">
+            <% @artists.each do |artist| %>
+              <li class="artist-card">
+                <%= f.check_box :partner_ids, {
+                  multiple: true, checked: @partner_ids.include?(artist.id), include_hidden: false
+                }, artist.id %>
+                <% if artist.thumbnail.present? %>
+                  <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
+                <% else %>
+                  <%= image_tag 'common/default.png', class: 'thumbnail' %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
     </table>
 
     <div class="actions">

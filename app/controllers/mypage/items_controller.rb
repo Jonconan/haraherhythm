@@ -13,12 +13,20 @@ class Mypage::ItemsController < ApplicationController
 
   def edit
     @item = current_artist.items.find_by(id: params[:id])
+    @partner_ids = @item.item_partners.map(&:artist_id)
+    @artists = Artist.where.not(id: @item.artist.id)
     @master_sales_formats = MasterSalesFormat.all
   end
 
   def update
     item = current_artist.items.find_by(id: params[:id])
     item.update(item_params)
+    item.item_partners.delete_all if item.item_partners.present?
+    params[:partner_ids].each do |partner_id|
+      item.item_partners.create(
+        artist_id: partner_id
+      )
+    end
     redirect_to mypage_item_path(id: item.id) and return
   end
 

@@ -17,6 +17,16 @@
               <%= image_tag 'common/default.png', class: 'thumbnail' %>
             <% end %>
           </li>
+          <% item.partners.each do |partner| %>
+            <li class="artist-card">
+              <!-- 関係者のアイコン -->
+              <% if partner.thumbnail.present? %>
+                <%= image_tag url_for(partner.thumbnail.url), class: 'thumbnail' %>
+              <% else %>
+                <%= image_tag 'common/default.png', class: 'thumbnail' %>
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
       <div class="live">2021.09.10 〇〇〇イベント</div>

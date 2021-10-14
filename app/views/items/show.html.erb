@@ -52,8 +52,15 @@
       <span class="star5_rating" data-rate="4.5"></span>
     </div>
     <ul class="artist-list">
-      <li class="artist-card"><%= image_tag 'artists/queen.png', class: 'thumbnail' %></li>
-      <li class="artist-card"><%= image_tag 'artists/vaioret.png', class: 'thumbnail' %></li>
+      <% @item.partners.each do |partner| %>
+        <li class="artist-card">
+          <% if partner.thumbnail.present? %>
+            <%= image_tag url_for(partner.thumbnail.url), class: 'thumbnail' %>
+          <% else %>
+            <%= image_tag 'common/default.png', class: 'thumbnail' %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>
