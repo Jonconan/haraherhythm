@@ -44,13 +44,35 @@ ActiveRecord::Schema.define(version: 2021_10_14_083718) do
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true
   end
 
-  create_table "item_lives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "item_id"
-    t.bigint "live_id"
+  create_table "event_artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "artist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_item_lives_on_item_id"
-    t.index ["live_id"], name: "index_item_lives_on_live_id"
+    t.index ["artist_id"], name: "index_event_artists_on_artist_id"
+    t.index ["event_id"], name: "index_event_artists_on_event_id"
+  end
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "code", null: false, comment: "ライブコード"
+    t.string "title", null: false, comment: "ライブ名"
+    t.text "description", comment: "ライブ情報"
+    t.string "thumbnail", comment: "ライブ画像"
+    t.date "date", null: false, comment: "開催日"
+    t.string "venue", null: false, comment: "ライブ会場"
+    t.string "website_url", comment: "関連サイトのURL"
+    t.boolean "delete_flg", default: false, null: false, comment: "削除フラグ"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "item_events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "event_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_item_events_on_event_id"
+    t.index ["item_id"], name: "index_item_events_on_item_id"
   end
 
   create_table "item_partners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -85,28 +107,6 @@ ActiveRecord::Schema.define(version: 2021_10_14_083718) do
     t.index ["artist_id"], name: "index_items_on_artist_id"
   end
 
-  create_table "live_artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "live_id"
-    t.bigint "artist_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["artist_id"], name: "index_live_artists_on_artist_id"
-    t.index ["live_id"], name: "index_live_artists_on_live_id"
-  end
-
-  create_table "lives", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "code", null: false, comment: "ライブコード"
-    t.string "title", null: false, comment: "ライブ名"
-    t.text "description", comment: "ライブ情報"
-    t.string "thumbnail", comment: "ライブ画像"
-    t.date "date", null: false, comment: "開催日"
-    t.string "venue", null: false, comment: "ライブ会場"
-    t.string "website_url", comment: "関連サイトのURL"
-    t.boolean "delete_flg", default: false, null: false, comment: "削除フラグ"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "master_sales_formats", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false, comment: "販売形式"
     t.boolean "delete_flg", default: false, null: false, comment: "削除フラグ"
@@ -126,13 +126,13 @@ ActiveRecord::Schema.define(version: 2021_10_14_083718) do
   end
 
   add_foreign_key "artist_sns_accounts", "artists"
-  add_foreign_key "item_lives", "items"
-  add_foreign_key "item_lives", "lives", column: "live_id"
+  add_foreign_key "event_artists", "artists"
+  add_foreign_key "event_artists", "events"
+  add_foreign_key "item_events", "events"
+  add_foreign_key "item_events", "items"
   add_foreign_key "item_partners", "artists"
   add_foreign_key "item_partners", "items"
   add_foreign_key "item_tags", "items"
   add_foreign_key "item_tags", "tags"
   add_foreign_key "items", "artists"
-  add_foreign_key "live_artists", "artists"
-  add_foreign_key "live_artists", "lives", column: "live_id"
 end

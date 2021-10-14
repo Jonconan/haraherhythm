@@ -20,7 +20,7 @@
     width: 100%;
   }
 }
-.mypage-live-settings {
+.mypage-event-settings {
   padding: 2rem;
   th {
     width: 30%;
@@ -30,7 +30,7 @@
   td {
     padding-left: 1rem;
 
-    .live-thumbnail-img {
+    .event-thumbnail-img {
       border-radius: 20px;
       padding: 1rem;
       width: 90%;
@@ -45,7 +45,7 @@
     }
   }
 
-  .live-button {
+  .event-button {
     font-size: 0.7rem;
     margin: 0.5rem auto;
     width: 50%;
@@ -67,7 +67,7 @@
       background: rgb(98, 0, 105);
     }
   }
-  .live-button:hover {
+  .event-button:hover {
     transition: all 0.2s;
     &.join {
       background: rgb(23, 141, 86);
@@ -84,7 +84,7 @@
     }
   }
 
-  .live-join-artists {
+  .event-join-artists {
     .artist-list {
       padding-inline-start: 0;
 
@@ -103,11 +103,11 @@
     }
   }
 
-  .edit-live {
+  .edit-event {
     margin: 1rem;
     display: flex;
 
-    .create-live-button {
+    .create-event-button {
       width: 100%;
       margin-right: 1.5rem;
       max-width: 200px;
@@ -127,7 +127,7 @@
         margin-right: 0.5rem;
       }
     }
-    .create-live-button:hover {
+    .create-event-button:hover {
       transition: all 0.2s;
       background: #6c53ff;
     }

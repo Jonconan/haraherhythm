@@ -1,8 +1,8 @@
 class Artist < ApplicationRecord
   has_many :artist_sns_accounts
   mount_uploader :thumbnail, ImageUploader
-  has_many :live_artists
-  has_many :life, through: :live_artists
+  has_many :event_artists
+  has_many :events, through: :event_artists
   has_many :items
   attr_accessor :twitter, :facebook, :instagram, :youtube
 
@@ -26,9 +26,5 @@ class Artist < ApplicationRecord
     )
     return account.account_path if account.present?
     nil
-  end
-
-  def join_lives
-    Live.where(id: live_artists.map(&:live_id)).default_order
   end
 end

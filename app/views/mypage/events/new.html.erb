@@ -2,42 +2,42 @@
   <ul>
     <li class="before-page"><%= link_to 'トップ', root_path %></li>
     <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
-    <li class="before-page"><%= link_to 'イベント情報', mypage_lives_path %></li>
-    <li>イベント編集</li>
+    <li class="before-page"><%= link_to 'イベント情報', mypage_events_path %></li>
+    <li>イベント新規作成</li>
   </ul>
 </div>
-<h2>イベント編集</h2>
-<div class="new-live">
-  <%= form_with url: mypage_life_path(id: @live.id), method: :patch do |f| %>
+<h2>新規イベント作成</h2>
+<div class="new-event">
+  <%= form_with url: mypage_events_path, method: :post do |f| %>
     <table class="new-artists">
       <tr>
         <th class="require">イベント名</th>
-        <td><%= f.text_field :title, value: @live.title %></td>
+        <td><%= f.text_field :title %></td>
       </tr>
       <tr>
         <th>イベントの紹介文</th>
-        <td><%= f.text_area :description, value: @live.description %></td>
+        <td><%= f.text_area :description %></td>
       </tr>
       <tr>
-        <th>イベント画像アップロード</th>
+        <th>画像アップロード</th>
         <td><%= f.file_field :thumbnail %></td>
       </tr>
       <tr>
         <th class="require">開催日</th>
-        <td><%= f.date_field :date, value: @live.date %></td>
+        <td><%= f.date_field :date %></td>
       </tr>
       <tr>
         <th class="require">イベント会場情報</th>
-        <td><%= f.text_field :venue, value: @live.venue %></td>
+        <td><%= f.text_field :venue %></td>
       </tr>
       <tr>
         <th>WebサイトのURL</th>
-        <td><%= f.text_field :website_url, value: @live.website_url %></td>
+        <td><%= f.text_field :website_url %></td>
       </tr>
     </table>
 
     <div class="actions">
-      <%= f.submit "更新" %>
+      <%= f.submit "作成" %>
     </div>
   <% end %>
 </div>

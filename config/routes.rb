@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get '/artists/sign_out' => 'artists/sessions#destroy', as: :artist_sign_out
   end
 
-  resources :lives, only: [] do
+  resources :events, only: [] do
     get '/', action: :index
   end
 
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
     get '/', action: :index
     get :edit
     post :update
-    resources :lives, only: [:index, :new, :create, :show, :edit, :update] do
-      get :join_live
-      get :left_live
+    resources :events, only: [:index, :new, :create, :show, :edit, :update] do
+      get :join_event
+      get :left_event
     end
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update] do

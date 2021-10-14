@@ -10,7 +10,7 @@ class Mypage::ItemsController < ApplicationController
   def new
     @master_sales_formats = MasterSalesFormat.all
     @artists = Artist.where.not(id: current_artist.id)
-    @lives = Live.order(date: :desc)
+    @events = Event.order(date: :desc)
     @tags = Tag.all
   end
 
@@ -18,8 +18,8 @@ class Mypage::ItemsController < ApplicationController
     @item = current_artist.items.find_by(id: params[:id])
     @artists = Artist.where.not(id: @item.artist.id)
     @master_sales_formats = MasterSalesFormat.all
-    @lives = Live.order(date: :desc)
-    @events = @item.item_life.map(&:live_id)
+    @all_events = Event.order(date: :desc)
+    @events = @item.item_events.map(&:event_id)
     @tags = Tag.all
   end
 
@@ -32,10 +32,10 @@ class Mypage::ItemsController < ApplicationController
         artist_id: partner_id
       )
     end
-    item.item_life.delete_all if item.item_life.present?
+    item.item_events.delete_all if item.item_events.present?
     params[:event_ids]&.each do |event_id|
-      item.item_life.create(
-        live_id: event_id
+      item.item_events.create(
+        event_id: event_id
       )
     end
 
@@ -68,8 +68,8 @@ class Mypage::ItemsController < ApplicationController
         )
       end
       params[:event_ids]&.each do |event_id|
-        item.item_life.create(
-          live_id: event_id
+        item.item_events.create(
+          event_id: event_id
         )
       end
 

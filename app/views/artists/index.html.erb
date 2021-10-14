@@ -118,9 +118,9 @@
 </div>
 
 <h2>参加したイベント一覧</h2>
-<% if @artist.join_lives.present? %>
+<% if @artist.events.present? %>
   <ul class="item-list">
-    <%= render partial: 'common/live_cards', locals: { lives: @artist.join_lives } %>
+    <%= render partial: 'common/event_cards', locals: { events: @artist.events } %>
   </ul>
 <% else %>
   まだ参加したイベントがありません

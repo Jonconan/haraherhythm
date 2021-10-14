@@ -7,19 +7,19 @@
   </ul>
 </div>
 <h2><%= @item.name %>の情報を確認する</h2>
-<table class="mypage-live-settings">
+<table class="mypage-event-settings">
   <tr>
     <th>
       アクション
-      <div class="live-button left">
-        <%= link_to item_path(life_id: @item.id), target: '_blank' do %>
+      <div class="event-button left">
+        <%= link_to item_path(id: @item.id), target: '_blank' do %>
           <i class="fas fa-shopping-bag"></i>ページを確認する
         <% end %>
       </div>
     </th>
     <td>
-      <div class="edit-live">
-        <div class="create-live-button">
+      <div class="edit-event">
+        <div class="create-event-button">
           <%= link_to edit_mypage_item_path(id: @item.id) do %>
             <i class="fas fa-edit"></i>商品を編集する
           <% end %>
@@ -48,9 +48,9 @@
     <th>商品の画像</th>
     <td>
       <% if @item.thumbnail.present? %>
-        <%= image_tag url_for(@item.thumbnail.url), class: 'live-thumbnail-img' %>
+        <%= image_tag url_for(@item.thumbnail.url), class: 'event-thumbnail-img' %>
       <% else %>
-        <%= image_tag 'live.jpg', class: 'live-thumbnail-img' %>
+        <%= image_tag 'live.jpg', class: 'event-thumbnail-img' %>
       <% end %>
     </td>
   </tr>
@@ -62,7 +62,7 @@
   </tr>
   <tr>
     <th>商品関係者</th>
-    <td class="live-join-artists">
+    <td class="event-join-artists">
       <ul class="artist-list">
         <% @item.artists.each do |artist| %>
           <li class="artist-card">
@@ -90,8 +90,8 @@
     <th>関係しているイベント</th>
     <td>
       <ul class="item-list item-detail">
-        <% @item.events.each do |live| %>
-          <li><%= live.title %>（<%= live.date.strftime('%Y.%m.%d') %>）</li>
+        <% @item.events.each do |event| %>
+          <li><%= event.title %>（<%= event.date.strftime('%Y.%m.%d') %>）</li>
         <% end %>
       </ul>
     </td>
