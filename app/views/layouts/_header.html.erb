@@ -3,27 +3,31 @@
     <li><%= link_to "トップページ", :root %></li>
   </ul>
 </div>
+<% # ログインしているのが一般ユーザーだった場合 %>
+<% if current_user.present? %>
 <div class="header-right">
   <ul>
     <li>
-      <% unless current_user.present? %>
-        <%= link_to "U新規登録", new_user_registration_path %>
-      <% end %>
+      ポイント購入
     </li>
     <li>
-      <% unless current_user.present? %>
-        <%= link_to "Uログイン", new_user_session_path %>
-      <% end %>
-    </li>
-    <li>
-      <% unless current_artist.present? %>
-        <%= link_to "A新規登録", new_artist_registration_path %>
-      <% end %>
-    </li>
-    <li>
-      <% unless current_artist.present? %>
-        <%= link_to "Aログイン", new_artist_session_path %>
-      <% end %>
+      <i class="fas fa-coins"></i> 1,580
     </li>
   </ul>
 </div>
+<% # ログインしているのがアーティストだった場合 %>
+<% elsif current_artist.present? %>
+
+<% # 誰もログインしていない場合 %>
+<% else %>
+<div class="header-right">
+  <ul>
+    <li>
+      <%= link_to "新規登録", new_user_registration_path %>
+    </li>
+    <li>
+      <%= link_to "ログイン", new_user_session_path %>
+    </li>
+  </ul>
+</div>
+<% end %>

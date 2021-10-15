@@ -11,6 +11,7 @@
       <div class="description">
         <div class="nickname"><%= current_user.nickname %></div>
         <div class="name"><%= current_user.name %></div>
+        <div class="name"><i class="fas fa-coins"></i> 1,580</div>
       </div>
     </div>
     <h2>メニュー</h2>
@@ -20,6 +21,7 @@
       <% end %>
       <li><div class="icon"><i class="fas fa-user-friends"></i></div>コミュニケーション</li>
       <li><div class="icon"><i class="fas fa-mail-bulk"></i></div>ファンレター</li>
+      <li><div class="icon"><i class="fas fa-download"></i></div>ダウンロード商品受信箱</li>
       <li><div class="icon"><i class="fas fa-shopping-cart"></i></div>購入履歴</li>
       <%= link_to edit_user_registration_path do %>
         <li><div class="icon"><i class="fas fa-user-edit"></i></div>プロフィール更新</li>
