@@ -26,6 +26,14 @@
     </contents>
     <footer>
       footer
+      <% unless (current_artist.present? || current_user.present?) %>
+        <div>
+          <%= link_to "アーティスト新規登録（いずれ隠す）", new_artist_registration_path %>
+        </div>
+        <div>
+          <%= link_to "アーティストログイン（いずれ隠す）", new_artist_session_path %>
+        </div>
+      <% end %>
     </footer>
   </body>
 </html>

@@ -34,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # PUT /resource
   def update
     if current_user.update(user_params)
-      redirect_to root_path
+      redirect_to mypage_path
     else
       render :new
     end

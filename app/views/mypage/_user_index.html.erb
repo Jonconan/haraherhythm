@@ -1,0 +1,63 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li><%= user.nickname %>さんのマイページ</li>
+  </ul>
+</div>
+<h2><%= user.nickname %>さんのプロフィール</h2>
+<ul class="artist-profile">
+  <li>
+    <div class="thumbnail">
+      <% if user.thumbnail.present? %>
+        <%= image_tag url_for(user.thumbnail.url) %>
+      <% else %>
+        <%= image_tag 'common/default.png' %>
+      <% end %>
+    </div>
+    <ul class="review-list">
+      <li><%#= image_tag 'friends.png', :class => 'icon', :size =>'16x16' %> 10</li>
+      <li><%#= image_tag 'good.png', :class => 'icon', :size =>'16x16' %> 20</li>
+      <li><%#= image_tag 'comment.png', :class => 'icon', :size =>'16x16' %>  3</li>
+    </ul>
+  </li>
+  <li>
+    <table>
+      <tr>
+        <th>ユーザー名</th><td>
+          <%= user.nickname %><br>
+          本名：<%= user.name %>（非公開）
+        </td>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <td>
+          <table class="sns_account_list">
+            <tr>
+              <td class="sns-id"><%= user.postal_code %></td>
+            </tr>
+            <tr>
+              <td class="sns-id"><%= user.address_1 %></td>
+            </tr>
+            <tr>
+              <td class="sns-id"><%= user.address_2 %></td>
+            </tr>
+            <tr>
+              <td class="sns-id"><%= user.address_3 %></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </li>
+</ul>
+
+<ul class="artist-button">
+  <li>
+    <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: 'btn-square-slant' %>
+  </li>
+  <li>
+    <%= link_to '自分のページを確認する',
+      artist_path(artist_id: user.id), target: '_blank',
+      class: 'btn-square-slant' %>
+  </li>
+</ul>
