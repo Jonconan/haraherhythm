@@ -1,0 +1,34 @@
+<div class="sidebar">
+  <% if current_user.present? %>
+    <div class="profile">
+      <div class="thumbnail">
+        <% if current_user.thumbnail.present? %>
+          <%= image_tag url_for(current_user.thumbnail.url), class: 'current_artist_icon' %>
+        <% else %>
+          <%= image_tag 'common/default.png', class: 'current_artist_icon' %>
+        <% end %>
+      </div>
+      <div class="description">
+        <div class="nickname"><%= current_user.nickname %></div>
+        <div class="name"><%= current_user.name %></div>
+      </div>
+    </div>
+    <h2>メニュー</h2>
+    <ul class="sidebar_menu">
+      <%= link_to mypage_path do %>
+        <li><div class="icon"><i class="fas fa-tachometer-alt"></i></div>ダッシュボード</li>
+      <% end %>
+      <li><div class="icon"><i class="fas fa-chart-line"></i></div>売上情報</li>
+      <%= link_to edit_user_registration_path do %>
+        <li><div class="icon"><i class="fas fa-user-edit"></i></div>プロフィール更新</li>
+      <% end %>
+      <%= link_to user_sign_out_path do %>
+        <li><div class="icon"><i class="fas fa-sign-out-alt"></i></div>ログアウト</li>
+      <% end %>
+    </ul>
+
+  <% else %>
+    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+  <% end %>
+</div>
