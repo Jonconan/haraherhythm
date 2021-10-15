@@ -6,12 +6,15 @@ Rails.application.routes.draw do
     :registrations => 'artists/registrations',
     :sessions => 'artists/sessions'
   }
+  devise_scope :artist do
+    get '/artists/sign_out' => 'artists/sessions#destroy', as: :artist_sign_out
+  end
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
-  devise_scope :artist do
-    get '/artists/sign_out' => 'artists/sessions#destroy', as: :artist_sign_out
+  devise_scope :user do
+    get '/users/sign_out' => 'users/sessions#destroy', as: :user_sign_out
   end
 
   resources :events, only: [] do
@@ -26,15 +29,19 @@ Rails.application.routes.draw do
   resources :items, only: [:show] do
   end
 
+  # マイページ内のURL
   namespace :mypage do
     get '/', action: :index
     get :edit
     post :update
+
+    # イベント登録＆編集
     resources :events, only: [:index, :new, :create, :show, :edit, :update] do
       get :join_event
       get :left_event
     end
 
+    # 商品登録＆編集
     resources :items, only: [:index, :new, :create, :show, :edit, :update] do
     end
   end

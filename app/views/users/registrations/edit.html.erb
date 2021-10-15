@@ -1,0 +1,52 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li>ユーザー更新</li>
+  </ul>
+</div>
+
+<h2>ユーザー更新</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "artists/shared/error_messages", resource: resource %>
+  <table class="new-artists">
+    <tr>
+      <th class="require">本名（非公開）</th>
+      <td><%= f.text_field :name, value: resource.name %></td>
+    </tr>
+    <tr>
+      <th class="require">表示名</th>
+      <td><%= f.text_field :nickname, value: resource.nickname %></td>
+    </tr>
+    <tr>
+      <th>アイコン</th>
+      <td>
+        <%= f.file_field :thumbnail %>
+      </td>
+    </tr>
+    <tr>
+      <th class="require">メールアドレス</th>
+      <td><%= f.email_field :email, value: resource.email %></td>
+    </tr>
+    <tr>
+      <th class="require">郵便番号</th>
+      <td><%= f.text_field :postal_code, value: resource.postal_code %></td>
+    </tr>
+    <tr>
+      <th class="require">都道府県</th>
+      <td><%= f.text_field :address_1, value: resource.address_1 %></td>
+    </tr>
+    <tr>
+      <th class="require">市区町村</th>
+      <td><%= f.text_field :address_2, value: resource.address_2 %></td>
+    </tr>
+    <tr>
+      <th class="require">番地等</th>
+      <td><%= f.text_field :address_3, value: resource.address_3 %></td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= f.submit "更新する" %>
+  </div>
+<% end %>
