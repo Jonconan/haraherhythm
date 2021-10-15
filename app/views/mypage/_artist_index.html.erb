@@ -1,0 +1,162 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li><%= artist.nickname %>さんのマイページ</li>
+  </ul>
+</div>
+<h2><%= artist.nickname %>さんのプロフィール</h2>
+<ul class="artist-profile">
+  <li>
+    <div class="thumbnail">
+      <% if artist.thumbnail.present? %>
+        <%= image_tag url_for(artist.thumbnail.url) %>
+      <% else %>
+        <%= image_tag 'common/default.png' %>
+      <% end %>
+    </div>
+    <ul class="review-list">
+      <li><%#= image_tag 'friends.png', :class => 'icon', :size =>'16x16' %> 10</li>
+      <li><%#= image_tag 'good.png', :class => 'icon', :size =>'16x16' %> 20</li>
+      <li><%#= image_tag 'comment.png', :class => 'icon', :size =>'16x16' %>  3</li>
+    </ul>
+  </li>
+  <li>
+    <table>
+      <tr>
+        <th>ユーザー名</th><td>
+          <%= artist.nickname %><br>
+          本名：<%= artist.name %>（非公開）
+        </td>
+      </tr>
+      <tr>
+        <th>誕生日</th>
+        <td>
+          <% if artist.birthday.present? %>
+            <%= artist.birthday.strftime("%m月 %d日") %>
+          <% else %>
+            未設定
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <th>SNS</th>
+        <td>
+          <table class="sns_account_list">
+            <tr>
+              <td class="sns"><%= image_tag 'common/twitter.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if artist.sns_account(sns_name: 'twitter').present? %>
+                  <%= link_to artist.sns_account(sns_name: 'twitter'),
+                  'https://twitter.com/'+ artist.sns_account(sns_name: 'twitter'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td class="sns"><%= image_tag 'common/facebook.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if artist.sns_account(sns_name: 'facebook').present? %>
+                  <%= link_to artist.sns_account(sns_name: 'facebook'),
+                  'https://www.facebook.com/'+ artist.sns_account(sns_name: 'facebook'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td class="sns"><%= image_tag 'common/instagram.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if artist.sns_account(sns_name: 'instagram').present? %>
+                  <%= link_to artist.sns_account(sns_name: 'instagram'),
+                  'https://www.instagram.com/'+ artist.sns_account(sns_name: 'instagram'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <td class="sns"><%= image_tag 'common/youtube.png', :class => 'sns-icon' %></td>
+              <td class="sns-id">
+                <% if artist.sns_account(sns_name: 'youtube').present? %>
+                  <%= link_to artist.sns_account(sns_name: 'youtube'),
+                  'https://www.youtube.com/user/'+ artist.sns_account(sns_name: 'youtube'),
+                  target: :_blank %>
+                <% else %>
+                  未設定
+                <% end %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <th>ホームページ</th><td>
+          <% if artist.website_url.present? %>
+            <%= link_to artist.website_url, artist.website_url, target: :_blank %>
+          <% else %>
+            未設定
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </li>
+</ul>
+
+<ul class="artist-button">
+  <li>
+    <%= link_to 'プロフィールを編集する', mypage_edit_path, class: 'btn-square-slant' %>
+  </li>
+  <li>
+    <%= link_to '自分のページを確認する',
+      artist_path(artist_id: artist.id), target: '_blank',
+      class: 'btn-square-slant' %>
+  </li>
+</ul>
+
+<div class="mypage-profile">
+  <div class="profile-contents">
+    <div class="tabs">
+      <input id="tab1" type="radio" name="tab_item" checked>
+      <label class="tab_item" for="tab1">自己紹介</label>
+      <input id="tab2" type="radio" name="tab_item">
+      <label class="tab_item" for="tab2">自己紹介2</label>
+      <input id="tab3" type="radio" name="tab_item">
+      <label class="tab_item" for="tab3">自己紹介3</label>
+      <input id="tab4" type="radio" name="tab_item">
+      <label class="tab_item" for="tab4">自己紹介4</label>
+      <input id="tab5" type="radio" name="tab_item">
+      <label class="tab_item" for="tab5">自己紹介5</label>
+
+      <div class="tab_content" id="tab1_content">
+        <div class="tab_content_description">
+          <pre><%= artist.description %></pre>
+        </div>
+      </div>
+      <div class="tab_content" id="tab2_content">
+        <div class="tab_content_description">
+          <p>職務経歴をずらずらーーーっとなんかうまい感じに2</p>
+        </div>
+      </div>
+      <div class="tab_content" id="tab3_content">
+        <div class="tab_content_description">
+          <p>職務経歴をずらずらーーーっとなんかうまい感じに3</p>
+        </div>
+      </div>
+      <div class="tab_content" id="tab4_content">
+        <div class="tab_content_description">
+          <p>思いつかん　登録したい内容あれば</p>
+        </div>
+      </div>
+      <div class="tab_content" id="tab5_content">
+        <div class="tab_content_description">
+          <p>思いつかーーーん　登録したい内容あれば</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

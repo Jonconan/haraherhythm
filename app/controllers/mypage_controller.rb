@@ -1,5 +1,5 @@
 class MypageController < ApplicationController
-  before_action :artist_check_sessions
+  before_action :mypage_session_check
 
   def index
   end
