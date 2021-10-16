@@ -4,6 +4,8 @@ class Artist < ApplicationRecord
   has_many :event_artists
   has_many :events, through: :event_artists
   has_many :items
+  has_many :user_artists
+  has_many :users, through: :user_artists
   attr_accessor :twitter, :facebook, :instagram, :youtube
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -26,5 +28,9 @@ class Artist < ApplicationRecord
     )
     return account.account_path if account.present?
     nil
+  end
+
+  def followed?(user: nil)
+    users.ids.include?(user.id)
   end
 end
