@@ -156,6 +156,28 @@ if Rails.env.development?
     address_2: "坂戸市千代田",
     address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
   ) unless Artist.find_by(email: "sofee@example.com").present?
+
+  100.times do |n|
+    unless User.find_by(email: "jonconan#{n}@example.com").present?
+      user = User.create(
+        email: "jonconan#{n}@example.com",
+        password: 'password',
+        name: "test user #{n}",
+        nickname: "test user #{n}",
+        postal_code: "3500214",
+        address_1: "埼玉県",
+        address_2: "坂戸市千代田",
+        address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
+      )
+      5.times do
+        artist_id = rand(1..15)
+        artist = Artist.find_by(id: artist_id)
+        break unless artist.present?
+
+        user.user_artists.create(artist_id: artist.id) unless user.artists.find_by(id: artist.id).present?
+      end
+    end
+  end
 end
 
 MasterSnsService.create(
