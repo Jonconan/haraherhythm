@@ -1,0 +1,13 @@
+<ul class="artist-list">
+  <li class="artist-card">
+    <% if artist.thumbnail.present? %>
+      <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
+    <% else %>
+      <%= image_tag 'common/default.png', class: 'thumbnail' %>
+    <% end %>
+    <div class="title"><%= artist.nickname %></div>
+  </li>
+  <div class="balloon">
+    <%= message %>
+  </div>
+</ul>

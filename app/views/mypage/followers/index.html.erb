@@ -1,0 +1,24 @@
+<div class="breadcrumb">
+  <ul>
+    <li class="before-page"><%= link_to 'トップ', root_path %></li>
+    <li class="before-page"><%= link_to "#{current_artist.nickname}さんのマイページ", mypage_path %></li>
+    <li>フォロワー一覧</li>
+  </ul>
+</div>
+<h2>フォロワー一覧</h2>
+<%= render partial: 'common/balloon_message', locals: { artist: current_artist, message: @message } %>
+
+<% if current_artist.users.present? %>
+<ul class="artist-list">
+  <% current_artist.users.each do |user| %>
+    <li class="artist-card">
+      <% if user.thumbnail.present? %>
+        <%= image_tag url_for(user.thumbnail.url), class: 'thumbnail' %>
+      <% else %>
+        <%= image_tag 'common/default.png', class: 'thumbnail' %>
+      <% end %>
+      <div class="title"><%= user.nickname %></div>
+    </li>
+  <% end %>
+</ul>
+<% end %>
