@@ -1,13 +1,13 @@
 <% events.each do |event| %>
   <%= link_to event_path(event_id: event.id) do %>
     <li class="item-card">
-      <div class="date"><%= event.date.strftime('%Y.%m.%d') %></div>
+      <div class="title"><%= event.title %></div>
       <% if event.thumbnail.present? %>
         <%= image_tag url_for(event.thumbnail.url), class: 'thumbnail' %>
       <% else %>
         <%= image_tag 'live.jpg', class: 'thumbnail' %>
       <% end %>
-      <div class="title"><%= event.title %></div>
+      <div class="date"><%= event.date.strftime('%Y.%m.%d') %></div>
     </li>
   <% end %>
 <% end %>

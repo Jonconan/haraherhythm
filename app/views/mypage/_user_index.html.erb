@@ -14,11 +14,6 @@
         <%= image_tag 'common/default.png' %>
       <% end %>
     </div>
-    <ul class="review-list">
-      <li><%#= image_tag 'friends.png', :class => 'icon', :size =>'16x16' %> 10</li>
-      <li><%#= image_tag 'good.png', :class => 'icon', :size =>'16x16' %> 20</li>
-      <li><%#= image_tag 'comment.png', :class => 'icon', :size =>'16x16' %>  3</li>
-    </ul>
   </li>
   <li>
     <table>
@@ -47,17 +42,41 @@
           </table>
         </td>
       </tr>
+      <tr>
+        <th>所持ポイント</th><td>
+          1,580
+        </td>
+      </tr>
     </table>
   </li>
 </ul>
 
-<ul class="artist-button">
-  <li>
-    <%= link_to 'プロフィールを編集する', edit_user_registration_path, class: 'btn-square-slant' %>
-  </li>
-  <li>
-    <%= link_to '自分のページを確認する',
-      artist_path(artist_id: user.id), target: '_blank',
-      class: 'btn-square-slant' %>
-  </li>
+<h2>フォローしているアーティスト</h2>
+<ul class="artist-list">
+  <% user.artists.reverse.each do |artist| %>
+    <%= link_to artist_path(artist_id: artist.id) do %>
+      <li class="artist-card">
+        <% if artist.thumbnail.present? %>
+          <%= image_tag url_for(artist.thumbnail.url), class: 'thumbnail' %>
+        <% else %>
+          <%= image_tag 'common/default.png', class: 'thumbnail' %>
+        <% end %>
+        <div class="title"><%= artist.nickname %></div>
+      </li>
+    <% end %>
+  <% end %>
 </ul>
+
+<h2>フォローしているアーティストが参加しているイベント一覧</h2>
+<ul class="item-list">
+  <%= render partial: 'common/event_cards', locals: { events: current_user.follow_artists_events } %>
+</ul>
+  もっと見る
+
+<h2>フォローしているアーティストが関係している商品一覧</h2>
+<div class="product-sales">
+  <ul class="item-list">
+    <%= render partial: 'common/item_cards', locals: { items: current_user.follow_artists_items } %>
+  </ul>
+  もっと見る
+</div>

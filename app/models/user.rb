@@ -7,4 +7,15 @@ class User < ApplicationRecord
 
   has_many :user_artists
   has_many :artists, through: :user_artists
+
+  def follow_artists_events
+    event_ids = EventArtist.artists_join_events(artists.ids)
+    Event.search_event_ids(event_ids).limit(3)
+  end
+
+  def follow_artists_items
+    item_ids = ItemPartner.artists_join_items(artists.ids)
+    item_ids.push(Item.where(artist_id: artists.ids).ids)
+    Item.where(id: item_ids.flatten.uniq).limit(3)
+  end
 end
