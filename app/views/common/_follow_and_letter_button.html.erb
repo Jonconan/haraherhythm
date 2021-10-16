@@ -1,0 +1,20 @@
+<% unless current_artist.present? %>
+<ul class="artist-button">
+  <% unless @is_following %>
+    <li>
+      <%= link_to artist_follow_path(artist_id: @artist.id), class: 'btn-square-slant' do %>
+        <i class="fas fa-users"></i> フォローする
+      <% end %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' do %>
+        <i class="fas fa-users-slash"></i> フォローを解除する
+      <% end %>
+    </li>
+  <% end %>
+  <li><a href="#" class="btn-square-slant">
+    <i class="fas fa-mail-bulk"></i> ファンレターを送る</a>
+  </li>
+</ul>
+<% end %>

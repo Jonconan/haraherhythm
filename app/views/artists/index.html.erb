@@ -97,24 +97,7 @@
   </li>
 </ul>
 
-<ul class="artist-button">
-  <% unless @is_following %>
-    <li>
-      <%= link_to artist_follow_path(artist_id: @artist.id), class: 'btn-square-slant' do %>
-        <i class="fas fa-users"></i> フォローする
-      <% end %>
-    </li>
-  <% else %>
-    <li>
-      <%= link_to artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' do %>
-        <i class="fas fa-users-slash"></i> フォローを解除する
-      <% end %>
-    </li>
-  <% end %>
-  <li><a href="#" class="btn-square-slant">
-    <i class="fas fa-mail-bulk"></i> ファンレターを送る</a>
-  </li>
-</ul>
+<%= render partial: 'common/follow_and_letter_button' %>
 
 <ul class="artist-list">
   <li class="artist-card">
@@ -155,13 +138,4 @@
   まだ商品を登録していません
 <% end %>
 
-<ul class="artist-button">
-  <% unless @is_following %>
-    <li><%= link_to 'フォローする', artist_follow_path(artist_id: @artist.id), class: 'btn-square-slant' %></li>
-  <% else %>
-    <li><%= link_to "フォローを解除する", artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' %></li>
-  <% end %>
-  <li><a href="#" class="btn-square-slant">
-    <i class="fas fa-mail-bulk"></i> ファンレターを送る</a>
-  </li>
-</ul>
+<%= render partial: 'common/follow_and_letter_button' %>
