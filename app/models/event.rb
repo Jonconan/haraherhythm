@@ -7,6 +7,9 @@ class Event < ApplicationRecord
   scope :default_order, -> {
     where(delete_flg: false).order(date: :desc)
   }
+  scope :search_event_ids, -> (event_ids) {
+    where(id: event_ids).default_order
+  }
 
   def items
     Item.where(id: item_events.map(&:item_id))

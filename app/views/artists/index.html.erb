@@ -99,32 +99,40 @@
 
 <ul class="artist-button">
   <% unless @is_following %>
-    <li><%= link_to 'フォローする', artist_follow_path(artist_id: @artist.id), class: 'btn-square-slant' %></li>
+    <li>
+      <%= link_to artist_follow_path(artist_id: @artist.id), class: 'btn-square-slant' do %>
+        <i class="fas fa-users"></i> フォローする
+      <% end %>
+    </li>
   <% else %>
-    <li><%= link_to 'フォローを解除する', artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' %></li>
+    <li>
+      <%= link_to artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' do %>
+        <i class="fas fa-users-slash"></i> フォローを解除する
+      <% end %>
+    </li>
   <% end %>
-  <li><a href="#" class="btn-square-slant">ファンレターを送る</a></li>
+  <li><a href="#" class="btn-square-slant">
+    <i class="fas fa-mail-bulk"></i> ファンレターを送る</a>
+  </li>
 </ul>
 
-<div class="profile-contents">
-  <div class="tabs">
-    <input id="tab1" type="radio" name="tab_item" checked>
-    <label class="tab_item" for="tab1">自己紹介</label>
-    <input id="tab2" type="radio" name="tab_item">
-    <label class="tab_item" for="tab2">自己紹介2</label>
-
-    <div class="tab_content" id="tab1_content">
-      <div class="tab_content_description">
-        <p>職務経歴をずらずらーーーっとなんかうまい感じに1</p>
-      </div>
-    </div>
-    <div class="tab_content" id="tab2_content">
-      <div class="tab_content_description">
-        <p>職務経歴をずらずらーーーっとなんかうまい感じに2</p>
-      </div>
-    </div>
+<ul class="artist-list">
+  <li class="artist-card">
+    <% if @artist.thumbnail.present? %>
+      <%= image_tag url_for(@artist.thumbnail.url), class: 'thumbnail' %>
+    <% else %>
+      <%= image_tag 'common/default.png', class: 'thumbnail' %>
+    <% end %>
+    <div class="title"><%= @artist.nickname %></div>
+  </li>
+  <div class="balloon">
+    <% if @artist.description.present? %>
+      <%= simple_format(@artist.description) %>
+    <% else %>
+      自己紹介がまだ登録されていません。
+    <% end %>
   </div>
-</div>
+</ul>
 
 <h2>参加したイベント一覧</h2>
 <% if @artist.events.present? %>
@@ -153,5 +161,7 @@
   <% else %>
     <li><%= link_to "フォローを解除する", artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' %></li>
   <% end %>
-  <li><a href="#" class="btn-square-slant">ファンレターを送る</a></li>
+  <li><a href="#" class="btn-square-slant">
+    <i class="fas fa-mail-bulk"></i> ファンレターを送る</a>
+  </li>
 </ul>

@@ -10,4 +10,8 @@ class Item < ApplicationRecord
   has_many :events, through: :item_events
 
   attr_accessor :tags_name, :tag_ids, :event_ids
+
+  scope :search_item_ids, -> (item_ids) {
+    where(id: item_ids)
+  }
 end
