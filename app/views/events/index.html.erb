@@ -30,19 +30,7 @@
   </div>
 </div>
 
-<ul class="artist-list">
-  <li class="artist-card">
-    <% if @event.artists.first.thumbnail.present? %>
-      <%= image_tag url_for(@event.artists.first.thumbnail.url), class: 'thumbnail' %>
-    <% else %>
-      <%= image_tag 'common/default.png', class: 'thumbnail' %>
-    <% end %>
-    <div class="title"><%= @event.artists.first.nickname %></div>
-  </li>
-  <div class="balloon">
-    <%= simple_format(@event.description) %>
-  </div>
-</ul>
+<%= render partial: 'common/balloon_message', locals: { artist: @event.artists.first, message: simple_format(@event.description) } %>
 
 <h2>物販一覧</h2>
 

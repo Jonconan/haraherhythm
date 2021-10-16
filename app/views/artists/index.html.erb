@@ -99,23 +99,7 @@
 
 <%= render partial: 'common/follow_and_letter_button' %>
 
-<ul class="artist-list">
-  <li class="artist-card">
-    <% if @artist.thumbnail.present? %>
-      <%= image_tag url_for(@artist.thumbnail.url), class: 'thumbnail' %>
-    <% else %>
-      <%= image_tag 'common/default.png', class: 'thumbnail' %>
-    <% end %>
-    <div class="title"><%= @artist.nickname %></div>
-  </li>
-  <div class="balloon">
-    <% if @artist.description.present? %>
-      <%= simple_format(@artist.description) %>
-    <% else %>
-      自己紹介がまだ登録されていません。
-    <% end %>
-  </div>
-</ul>
+<%= render partial: 'common/balloon_message', locals: { artist: @artist, message: simple_format(@artist.description) } %>
 
 <h2>参加したイベント一覧</h2>
 <% if @artist.events.present? %>

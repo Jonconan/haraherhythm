@@ -29,7 +29,9 @@
       <%= link_to mypage_events_path do %>
         <li><div class="icon"><i class="fas fa-glass-cheers"></i></div>イベント情報</li>
       <% end %>
-      <li><div class="icon"><i class="fas fa-users"></i></div>フォロワー情報</li>
+      <%= link_to mypage_followers_path do %>
+        <li><div class="icon"><i class="fas fa-users"></i></div>フォロワー情報</li>
+      <% end %>
       <li><div class="icon"><i class="far fa-envelope"></i></div>ファンレター情報</li>
     </ul>
     <h2>その他</h2>

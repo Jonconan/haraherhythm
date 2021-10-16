@@ -44,6 +44,9 @@ Rails.application.routes.draw do
       get :left_event
     end
 
+    resources :followers, only: [:index] do
+    end
+
     # 商品登録＆編集
     resources :items, only: [:index, :new, :create, :show, :edit, :update] do
     end
