@@ -7,7 +7,12 @@
 <h2><%= @artist.nickname %>さんのプロフィール</h2>
 <ul class="artist-profile">
   <li>
-    <div class="thumbnail">
+    <div class="thumbnail<%= @is_following ? ' ribbon-wrapper' : '' %>">
+      <% if @is_following %>
+        <div class="ribbon-content">
+          <span class="ribbon">following</span>
+        </div>
+      <% end %>
       <% if @artist.thumbnail.present? %>
         <%= image_tag url_for(@artist.thumbnail.url) %>
       <% else %>
@@ -15,7 +20,7 @@
       <% end %>
     </div>
     <ul class="review-list">
-      <li><%#= image_tag 'friends.png', :class => 'icon', :size =>'16x16' %> 10</li>
+      <li><i class="fas fa-users"></i> <%= @artist.users.count %></li>
       <li><%#= image_tag 'good.png', :class => 'icon', :size =>'16x16' %> 20</li>
       <li><%#= image_tag 'comment.png', :class => 'icon', :size =>'16x16' %>  3</li>
     </ul>
@@ -93,7 +98,11 @@
 </ul>
 
 <ul class="artist-button">
-  <li><a href="#" class="btn-square-slant">フォローする</a></li>
+  <% unless @is_following %>
+    <li><%= link_to 'フォローする', artist_follow_path(artist_id: @artist.id), class: 'btn-square-slant' %></li>
+  <% else %>
+    <li><%= link_to 'フォローを解除する', artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' %></li>
+  <% end %>
   <li><a href="#" class="btn-square-slant">ファンレターを送る</a></li>
 </ul>
 
@@ -139,6 +148,10 @@
 <% end %>
 
 <ul class="artist-button">
-  <li><a href="#" class="btn-square-slant">フォローする</a></li>
+  <% unless @is_following %>
+    <li><%= link_to 'フォローする', artist_follow_path(artist_id: @artist.id), class: 'btn-square-slant' %></li>
+  <% else %>
+    <li><%= link_to "フォローを解除する", artist_unfollow_path(artist_id: @artist.id), class: 'btn-square-slant unfollow' %></li>
+  <% end %>
   <li><a href="#" class="btn-square-slant">ファンレターを送る</a></li>
 </ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_130549) do
+ActiveRecord::Schema.define(version: 2021_10_16_063855) do
 
   create_table "artist_sns_accounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "artist_id"
@@ -125,6 +125,15 @@ ActiveRecord::Schema.define(version: 2021_10_15_130549) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_artists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "artist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["artist_id"], name: "index_user_artists_on_artist_id"
+    t.index ["user_id"], name: "index_user_artists_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", null: false, comment: "メールアドレス"
     t.string "encrypted_password", null: false, comment: "hashパスワード"
@@ -155,4 +164,6 @@ ActiveRecord::Schema.define(version: 2021_10_15_130549) do
   add_foreign_key "item_tags", "items"
   add_foreign_key "item_tags", "tags"
   add_foreign_key "items", "artists"
+  add_foreign_key "user_artists", "artists"
+  add_foreign_key "user_artists", "users"
 end

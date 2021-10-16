@@ -144,8 +144,12 @@ td.basic_info_confirm {
   color: #FFF;
   border-bottom: solid 5px #5b1c8b;/*ボタン色より暗めに*/
   border-right: solid 5px #431467;/*ボタン色より暗めに*/
+  &.unfollow {
+    background: #006233;/*ボタン色*/
+    border-bottom: solid 5px #00341b;/*ボタン色より暗めに*/
+    border-right: solid 5px rgb(62, 12, 100);/*ボタン色より暗めに*/
+  }
 }
-
 .btn-square-slant:before {
   content: " ";
   position: absolute;
@@ -170,4 +174,54 @@ td.basic_info_confirm {
   border-style: solid;
   border-color: #FFF;
   border-bottom-color: transparent;
+}
+
+
+.ribbon-wrapper {
+  position: relative;
+}
+
+.ribbon-content {
+  position: absolute;
+  right: 2.5rem;
+  width: 89px;
+  height: 91px;
+  overflow: hidden;
+  }
+
+.ribbon {
+  display: inline-block;
+  position: absolute;
+  padding: 7px 0;
+  left: -23px;
+  top: 22px;
+  width: 160px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-style: italic;
+  line-height: 16px;
+  background: linear-gradient(to right, #4298fa 0%,#8fcdff 100%);
+  color: #fff;
+  text-shadow: 0 2px 2px #56a1f3;
+  letter-spacing: 0.05em;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.ribbon:before, .ribbon:after {
+  position: absolute;
+  content: "";
+  border-top: 4px solid #3672b6;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  bottom: -4px;
+}
+
+.ribbon:before {
+  left: 14px;
+}
+
+.ribbon:after {
+  right: 18px;
 }

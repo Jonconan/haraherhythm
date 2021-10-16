@@ -23,6 +23,9 @@ Rails.application.routes.draw do
 
   resources :artists, only: [] do
     get '/', action: :index
+    get :follow
+    get :unfollow
+
     resources :items, only: [:index]
   end
 
