@@ -4,9 +4,9 @@ class Item < ApplicationRecord
   belongs_to :sales_format, class_name: 'MasterSalesFormat', foreign_key: :sales_format_id
   has_many :item_tags
   has_many :tags, through: :item_tags
-  has_many :item_partners
+  has_many :item_partners, -> { order(id: :desc) }
   has_many :artists, through: :item_partners
-  has_many :item_events
+  has_many :item_events, -> { order(id: :desc) }
   has_many :events, through: :item_events
 
   attr_accessor :tags_name, :tag_ids, :event_ids

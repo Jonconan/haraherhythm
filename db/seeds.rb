@@ -157,25 +157,46 @@ if Rails.env.development?
     address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
   ) unless Artist.find_by(email: "sofee@example.com").present?
 
-  100.times do |n|
-    unless User.find_by(email: "jonconan#{n}@example.com").present?
-      user = User.create(
-        email: "jonconan#{n}@example.com",
-        password: 'password',
-        name: "test user #{n}",
-        nickname: "test user #{n}",
-        postal_code: "3500214",
-        address_1: "埼玉県",
-        address_2: "坂戸市千代田",
-        address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
-      )
-      5.times do
-        artist_id = rand(1..15)
-        artist = Artist.find_by(id: artist_id)
-        break unless artist.present?
+  # イベントを作成する
+  20.times do |n|
+    next if Event.find_by(title: "ライブイベント-#{n}").present?
 
-        user.user_artists.create(artist_id: artist.id) unless user.artists.find_by(id: artist.id).present?
-      end
+    event = Event.create(
+      code: SecureRandom.alphanumeric,
+      title: "ライブイベント-#{n}",
+      description: "ライブをするイベントです\nぜひ来てね！",
+      date: rand(Date.parse("2021/09/01")..Date.parse("2021/11/11")),
+      venue: 'online'
+    )
+    5.times do
+      artist_id = rand(1..15)
+      artist = Artist.find_by(id: artist_id)
+      break unless artist.present?
+      event.event_artists.create(
+        artist_id: artist.id
+      ) unless event.artists.find_by(id: artist.id).present?
+    end
+  end
+
+  # ユーザーを作成する
+  500.times do |n|
+    next if User.find_by(email: "jonconan#{n}@example.com").present?
+
+    user = User.create(
+      email: "jonconan#{n}@example.com",
+      password: 'password',
+      name: "test user #{n}",
+      nickname: "test user #{n}",
+      postal_code: "3500214",
+      address_1: "埼玉県",
+      address_2: "坂戸市千代田",
+      address_3: "3-21-23 ヴィラ・ボンセジュール若葉307"
+    )
+    5.times do
+      artist_id = rand(1..15)
+      artist = Artist.find_by(id: artist_id)
+      break unless artist.present?
+      user.user_artists.create(artist_id: artist.id) unless user.artists.find_by(id: artist.id).present?
     end
   end
 end
@@ -198,14 +219,14 @@ MasterSnsService.create(
 
 MasterSalesFormat.create(
   name: "物品販売（自宅から発送）"
-) unless MasterSnsService.find_by(name: "物品販売（自宅から発送）").present?
+) unless MasterSalesFormat.find_by(name: "物品販売（自宅から発送）").present?
 
 MasterSalesFormat.create(
   name: "物品販売（ダウンロード商品）"
-) unless MasterSnsService.find_by(name: "物品販売（ダウンロード商品）").present?
+) unless MasterSalesFormat.find_by(name: "物品販売（ダウンロード商品）").present?
 
 MasterSalesFormat.create(
   name: "受注生産"
-) unless MasterSnsService.find_by(name: "受注生産").present?
+) unless MasterSalesFormat.find_by(name: "受注生産").present?
 
 puts "Done."

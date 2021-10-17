@@ -4,7 +4,7 @@ class Artist < ApplicationRecord
   has_many :event_artists
   has_many :events, through: :event_artists
   has_many :items
-  has_many :user_artists
+  has_many :user_artists, -> { order(id: :desc) }
   has_many :users, through: :user_artists
   attr_accessor :twitter, :facebook, :instagram, :youtube
 
