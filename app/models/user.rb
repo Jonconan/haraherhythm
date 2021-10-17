@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :user_artists
+  has_many :user_artists, -> { order(id: :desc) }
   has_many :artists, through: :user_artists
 
   def follow_artists_events
