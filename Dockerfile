@@ -1,4 +1,4 @@
-FROM ruby:2.7.4
+FROM ruby:3.0.2
 ENV APP_NAME haraherhythm
 
 RUN apt-get update && apt-get install -y \
