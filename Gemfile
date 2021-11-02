@@ -14,9 +14,10 @@ gem 'devise'
 gem 'nokogiri'
 
 gem 'bootsnap'
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 gem 'fog-aws'
 gem 'carrierwave'
+gem 'stripe'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
