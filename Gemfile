@@ -11,7 +11,7 @@ gem 'webpacker'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'devise'
-gem "nokogiri", ">= 1.12.5"
+gem 'nokogiri'
 
 gem 'bootsnap'
 gem "aws-sdk-s3", require: false
