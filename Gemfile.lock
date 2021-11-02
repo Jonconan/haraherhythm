@@ -286,6 +286,7 @@ DEPENDENCIES
   jbuilder
   listen
   mysql2
+  nokogiri (>= 1.12.5)
   puma
   rails (~> 6.1.4)
   sass-rails
