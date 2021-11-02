@@ -11,6 +11,7 @@ gem 'webpacker'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'devise'
+gem 'nokogiri'
 
 gem 'bootsnap'
 gem "aws-sdk-s3", require: false
